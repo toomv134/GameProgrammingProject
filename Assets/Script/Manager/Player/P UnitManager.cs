@@ -6,15 +6,12 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
 {
     public static PUnitManager instance;
 
-    public PBuildingManager BM;
-    public PResourceManager PM;
-
     private float pos_x;
     private float pos_y;
     private float pos_z;
-    private float Paladin;
-    private float Lancer;
-    private float Archer;
+    public float Paladin;
+    public float Lancer;
+    public float Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
 

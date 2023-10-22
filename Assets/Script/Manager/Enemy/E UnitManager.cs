@@ -8,9 +8,9 @@ public class EUnitManager : MonoBehaviour
     private float pos_x;
     private float pos_y;
     private float pos_z;
-    //private float Paladin;
-    //private float Lancer;
-    //private float Archer;
+    public float Paladin;
+    public float Lancer;
+    public float Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
 
@@ -35,9 +35,9 @@ public class EUnitManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Paladin = EuildingManager.instance.P_building.Count * 10;
-        //Lancer = EBuildingManager.instance.L_building.Count * 10;
-        //Archer = EBuildingManager.instance.A_building.Count * 10;
+        Paladin = EBuildingManager.instance.P_building.Count * 10;
+        Lancer = EBuildingManager.instance.L_building.Count * 10;
+        Archer = EBuildingManager.instance.A_building.Count * 10;
 
         pos_x = pos_y = pos_z = 0;
         foreach (EUnit u in units)

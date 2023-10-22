@@ -8,7 +8,10 @@ public class GameManagaer : MonoBehaviour
 
     public GameObject Player;
     public GameObject Enemy;
-    
+
+    public float Day;
+    public float Phase;
+
     private void Awake()
     {
         if (instance == null)
@@ -26,26 +29,15 @@ public class GameManagaer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.GetComponent<Life>().amount <= 0) //Player lose
-        {
+        //if (Player.GetComponent<Life>().amount <= 0) //Player lose
+        //{
 
-        }
-        else if (Enemy.GetComponent<Life>().amount <= 0) //Enemy lose
-        {
+        //}
+        //else if (Enemy.GetComponent<Life>().amount <= 0) //Enemy lose
+        //{
 
-        }
+        //}
     }
 
-    void Phase1() //전날이랑 비교
-    {
 
-    }
-    void Phase2() //건물, 유닛 생산, 연구
-    {
-
-    }
-    void Phase3() // 3Day부터 공격여부 결정
-    {
-
-    }
 }
