@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject UnitManger;
     private void Awake()
     {
-        if (instance = null)
+        if (instance == null)
         {
             instance = this;
         }

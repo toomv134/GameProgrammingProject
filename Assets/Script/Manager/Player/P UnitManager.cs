@@ -5,9 +5,16 @@ using UnityEngine;
 public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
 {
     public static PUnitManager instance;
+
+    public PBuildingManager BM;
+    public PResourceManager PM;
+
     private float pos_x;
     private float pos_y;
     private float pos_z;
+    private float Paladin;
+    private float Lancer;
+    private float Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
 
@@ -33,6 +40,10 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
 
     private void FixedUpdate()
     {
+        Paladin = PBuildingManager.instance.P_building.Count * 10;
+        Lancer = PBuildingManager.instance.L_building.Count * 10;
+        Archer = PBuildingManager.instance.A_building.Count * 10;
+
         pos_x = pos_y = pos_z = 0;
         foreach(PUnit u in units)
         {
