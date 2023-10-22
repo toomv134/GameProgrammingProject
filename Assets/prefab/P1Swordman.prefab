@@ -156,10 +156,12 @@ MonoBehaviour:
   radius: 0
   layer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   enemis: []
   target: {fileID: 0}
   enemy_inrange: 0
+  angle: 45
+  distance: 3
 --- !u!114 &20582150483572199
 MonoBehaviour:
   m_ObjectHideFlags: 0
