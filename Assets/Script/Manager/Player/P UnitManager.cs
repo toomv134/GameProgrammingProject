@@ -26,8 +26,12 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
             Debug.Log("Duplicated UnitManager, ignoring this one", gameObject);
         }
     }
-    // Start is called before the first frame update
-
+    private void Start()
+    {
+        Paladin = 0;
+        Lancer = 0;
+        Archer = 0;
+    }
     public List<PUnit> units;
     public List<PPaladin> P_units;
     public List<PLancer> L_units;
