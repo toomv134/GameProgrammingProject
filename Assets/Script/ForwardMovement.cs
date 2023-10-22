@@ -6,7 +6,15 @@ public class ForwardMovement : MonoBehaviour
 {
     public float speed;
     public Vector3 forward;
+    private Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    private void FixedUpdate()
+    {
 
+    }
     void Update()
     {
         this.transform.LookAt(forward);
