@@ -97,7 +97,7 @@ namespace GabrielBissonnette.SAD
         {
             // Fade Animation
             main_animator.enabled = true;
-            main_animator.SetTrigger("Map");
+            main_animator.SetTrigger("MainScene");
 
             StartCoroutine(WaitToLoadLevel());
         }
@@ -107,7 +107,7 @@ namespace GabrielBissonnette.SAD
             yield return new WaitForSeconds(delayBeforeLoading);
 
             // Scene Load
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene("Map");
         }
 
         public void Quit()
