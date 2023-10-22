@@ -43,7 +43,7 @@ public class CameraSwitch : MonoBehaviour
         {
             movingCamera.transform.position = firstCamera.transform.position;
         }
-        if (Input.GetKeyDown(KeyCode.Keypad1) && !isTransitioning)
+        if (Input.GetKeyDown(KeyCode.Q) && !isTransitioning)
         {
             if (firstCamera.enabled)//1 짓기 화면이 켜있다면
             {
@@ -62,7 +62,7 @@ public class CameraSwitch : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2) && !isTransitioning)
+        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning)
         {
             if (secondCamera.enabled)
             {
