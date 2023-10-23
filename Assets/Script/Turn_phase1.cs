@@ -10,6 +10,8 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
     public float Day;
     public bool phase1;
     private TMP_Text state;
+    [SerializeField] TextMeshProUGUI firstphase_turn;
+    [SerializeField] TextMeshProUGUI firstphase_text;
     public void Awake()
     {
         if (instance == null)
@@ -39,7 +41,8 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
     {
         if (phase1)
         {
-            state.text = "Paladin : " + PUnitManager.instance.Paladin.ToString() +
+            firstphase_turn.text = Day+" turn";
+            firstphase_text.text = "Paladin : " + PUnitManager.instance.Paladin.ToString() +
             "\nLancer : " + PUnitManager.instance.Lancer.ToString() +
             "\nArcher : " + PUnitManager.instance.Archer.ToString() +
             "\nMP : " + PResourceManager.instance.MP.ToString() +
@@ -50,7 +53,7 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
         }
         else
         {
-            state.text = "";
+            firstphase_text.text = "";
         }
     }
 }

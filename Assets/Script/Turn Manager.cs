@@ -10,6 +10,7 @@ public class TurnManager: MonoBehaviour
 
     public float Day;
     public float Phase;
+    public GameObject firstphase;
     public GameObject Xbutton;
 
     private float Paladin;
@@ -41,6 +42,7 @@ public class TurnManager: MonoBehaviour
 
     public void TurnStart()
     {
+        
         Phase1();
         Day++;
     }
@@ -59,12 +61,14 @@ public class TurnManager: MonoBehaviour
             Debug.Log("Phase1 start");
             Debug.Log(Day);
             Turn_phase1.instance.phase1 = true;
+            firstphase.SetActive(true);
             Xbutton.SetActive(true);
         }
     }
     public void Phase2() // °Ç¹° Áþ±â
     {
         Turn_phase1.instance.phase1 = false;
+        firstphase.SetActive(false);
         Xbutton.SetActive(false);
         Debug.Log("Phase2 start");
     }
