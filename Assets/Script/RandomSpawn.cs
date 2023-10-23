@@ -17,7 +17,7 @@ public class RandomSpawn : MonoBehaviour
     {
         for(int i=0;i<num;i++)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0);
 
             GameObject instantUnit = Instantiate(unit, Return_RandomPosition(), Quaternion.identity);
         }
@@ -36,7 +36,7 @@ public class RandomSpawn : MonoBehaviour
 
         range_X = Random.Range((range_X / 2) * -1, range_X / 2);
         range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
-        Vector3 RandomPosition = new Vector3(range_X, 2f, range_Z);
+        Vector3 RandomPosition = new Vector3(range_X, 0, range_Z);
 
         Vector3 respawnPosition = originPosition + RandomPosition;
 

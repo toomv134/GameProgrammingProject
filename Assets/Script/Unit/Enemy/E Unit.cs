@@ -47,9 +47,9 @@ public class EUnit: MonoBehaviour
     }
     private void Update()
     {
-        //P2UnitManager.instance.pos.x += this.transform.position.x;
-        //P2UnitManager.instance.pos.y += this.transform.position.y;
-        //P2UnitManager.instance.pos.z += this.transform.position.z;
+        //EUnitManager.instance.pos.x += this.transform.position.x;
+        //EUnitManager.instance.pos.y += this.transform.position.y;
+        //EUnitManager.instance.pos.z += this.transform.position.z;
 
 
     }
