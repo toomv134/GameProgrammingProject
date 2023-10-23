@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 15
-  damage: 0
+  damage: 10
 --- !u!135 &-5673919564422686921
 SphereCollider:
   m_ObjectHideFlags: 0

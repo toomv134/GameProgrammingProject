@@ -49,9 +49,9 @@ public class PUnit: MonoBehaviour
     }
     private void Update()
     {
-        //P1UnitManager.instance.pos.x += this.transform.position.x;
-        //P1UnitManager.instance.pos.y += this.transform.position.y;
-        //P1UnitManager.instance.pos.z += this.transform.position.z;
+        //PUnitManager.instance.pos.x += this.transform.position.x;
+        //PUnitManager.instance.pos.y += this.transform.position.y;
+        //PUnitManager.instance.pos.z += this.transform.position.z;
     }
     private void OnDestroy()
     {

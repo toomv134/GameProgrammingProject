@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 3
-  damage: 0
+  damage: 1
 --- !u!135 &3091248622941375293
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4a9a1d77da98648aacdd3644bf90b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 400
+  amount: 1000
   onDeath:
     m_PersistentCalls:
       m_Calls: []

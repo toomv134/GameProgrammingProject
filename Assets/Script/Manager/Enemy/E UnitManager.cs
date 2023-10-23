@@ -35,9 +35,9 @@ public class EUnitManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Paladin = EBuildingManager.instance.P_building.Count * 10;
-        Lancer = EBuildingManager.instance.L_building.Count * 10;
-        Archer = EBuildingManager.instance.A_building.Count * 10;
+        //Paladin = EBuildingManager.instance.P_building.Count * 10;
+        //Lancer = EBuildingManager.instance.L_building.Count * 10;
+        //Archer = EBuildingManager.instance.A_building.Count * 10;
 
         pos_x = pos_y = pos_z = 0;
         foreach (EUnit u in units)
