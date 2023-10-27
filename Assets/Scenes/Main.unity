@@ -15207,7 +15207,7 @@ MonoBehaviour:
   alpha_particleHuge: 0.05
   manualModeIntroText: 0
   introTextContent: Hwang Jeong Presented
-  sceneToLoad: Map
+  sceneToLoad: Person choose
   delayBeforeLoading: 3
   manualModeTexts: 0
   play: Start
@@ -15277,7 +15277,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -15389,7 +15389,7 @@ GameObject:
   - component: {fileID: 2866905853203279464}
   - component: {fileID: 2866905853203279465}
   m_Layer: 0
-  m_Name: Demo3
+  m_Name: Main menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
