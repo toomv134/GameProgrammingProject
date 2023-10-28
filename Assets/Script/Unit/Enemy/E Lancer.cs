@@ -15,4 +15,8 @@ public class ELancer : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        EUnitManager.instance.L_units.Remove(this);
+    }
 }

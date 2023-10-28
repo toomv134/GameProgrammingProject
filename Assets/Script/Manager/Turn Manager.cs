@@ -53,7 +53,11 @@ public class TurnManager: MonoBehaviour
     }
     public void TurnEnd()
     {
-
+        //턴 끝나면 자원 보충
+        //PResourceManager.instance.MP += 50 + PBuildingManager.instance.R_building.Count * 50;
+        //EResourceManager.instance.MP += 50 + EBuildingManager.instance.R_building.Count * 50;
+        //유닛 보충
+        
     }
     public void Phase1() //전날이랑 비교
     {

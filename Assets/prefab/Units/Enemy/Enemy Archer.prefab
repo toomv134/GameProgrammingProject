@@ -114,6 +114,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 339769e19d1a3974a93f5fcdbe9fa01f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Archer
+      objectReference: {fileID: 0}
     - target: {fileID: 2234995421923447144, guid: 339769e19d1a3974a93f5fcdbe9fa01f,
         type: 3}
       propertyPath: m_Bones.Array.data[69]
@@ -172,6 +177,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2684963005736976062}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 339769e19d1a3974a93f5fcdbe9fa01f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -427671356017852947}
   m_SourcePrefab: {fileID: 100100000, guid: 339769e19d1a3974a93f5fcdbe9fa01f, type: 3}
 --- !u!4 &3127352220207058900 stripped
 Transform:
@@ -275,9 +284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 100
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-2151646566973120769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,3 +319,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 626424037158238295, guid: fe39b64715f8b2c4ab8c989570c6614c, type: 3}
   shootpoint: {fileID: 3082904831402567531}
+--- !u!114 &-427671356017852947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922260601617121706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393837d3d0c724a4a8c10c71da527ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -15,4 +15,8 @@ public class EArcher : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        EUnitManager.instance.A_units.Remove(this);
+    }
 }

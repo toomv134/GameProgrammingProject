@@ -15,4 +15,9 @@ public class PPaladin : MonoBehaviour
     {
         
     }
+
+    private void OnDestroy()
+    {
+        PUnitManager.instance.P_units.Remove(this);
+    }
 }
