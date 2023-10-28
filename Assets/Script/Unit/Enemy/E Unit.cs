@@ -7,7 +7,8 @@ public class EUnit: MonoBehaviour
   //  public float speed; //unit speed
     public float distance; //unit attack range
     public float damage; // unit attack damage
- //   public float hp; //unit HP
+    public bool atk = true;
+    //   public float hp; //unit HP
 
     GameObject obj;
 
@@ -42,7 +43,11 @@ public class EUnit: MonoBehaviour
         else // 공격중 공격할 적이 있다. 
         {
             this.GetComponent<ForwardMovement>().forward = this.GetComponent<overlapspere>().target.transform.position;
-            StartCoroutine(Attack());
+            if (atk)
+            {
+                StartCoroutine(Attack());
+                atk = false;
+            }
         }
     }
     private void Update()
@@ -59,10 +64,15 @@ public class EUnit: MonoBehaviour
     }
     IEnumerator Attack()
     {
-        while (true)
+        bool at = true;
+        yield return new WaitForSecondsRealtime(1.0f);
+        if (at)
         {
-            yield return new WaitForSecondsRealtime(1.0f);
+            Debug.Log("hit");
+            this.GetComponent<overlapspere>().target.GetComponent<Animator>().SetTrigger("IsHit");
             this.GetComponent<overlapspere>().target.GetComponent<Life>().amount -= damage;
+            StartCoroutine(Attack());
+            at = false;
         }
     }
 }
