@@ -24,4 +24,9 @@ public class PBuildingManager: MonoBehaviour //어떤 건물이 몇개 지어져있는지 관�
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
 }

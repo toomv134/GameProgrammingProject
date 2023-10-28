@@ -9,7 +9,7 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
     public static Turn_phase1 instance;
     public float Day;
     public bool phase1;
-    private TMP_Text state;
+    
     [SerializeField] TextMeshProUGUI firstphase_turn;
     [SerializeField] TextMeshProUGUI firstphase_text;
     public void Awake()
@@ -26,10 +26,10 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
 
     private void Start()
     {
-        state = GameObject.Find("State").GetComponent<TMP_Text>();
+
         phase1 = false;
         Debug.Log("Phase1 start");
-        Day = TurnManager.instance.Day;
+        
         
     }
     private void Update()
@@ -41,6 +41,7 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
     {
         if (phase1)
         {
+            Day = TurnManager.instance.Day;
             firstphase_turn.text = Day+" turn";
             firstphase_text.text = "Paladin : " + PUnitManager.instance.Paladin.ToString() +
             "\nLancer : " + PUnitManager.instance.Lancer.ToString() +

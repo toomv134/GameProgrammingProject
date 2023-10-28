@@ -14,7 +14,7 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     public float Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
-
+    private float TurnChange;
     public void Awake()
     {
         if (instance == null)
@@ -31,6 +31,7 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
         Paladin = 0;
         Lancer = 0;
         Archer = 0;
+        TurnChange = TurnManager.instance.Day;
     }
     public List<PUnit> units;
     public List<PPaladin> P_units;
@@ -56,10 +57,22 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     }
     private void Update()
     {
+        if (TurnChange != TurnManager.instance.Day)
+        {
+            TurnChangeGainArmy();
+            TurnChange = TurnManager.instance.Day;
+        }
         float count = units.Count;
         
         pos = new Vector3(pos_x / count, pos_y / count, pos_z / count);
         
         enemy_pos = EUnitManager.instance.pos;
+    }
+
+    private void TurnChangeGainArmy()
+    {
+        Paladin += PBuildingManager.instance.P_building.Count * 3;
+        Lancer += PBuildingManager.instance.L_building.Count * 3;
+        Archer += PBuildingManager.instance.A_building.Count * 3;
     }
 }
