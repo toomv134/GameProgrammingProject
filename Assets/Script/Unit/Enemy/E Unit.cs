@@ -30,7 +30,7 @@ public class EUnit: MonoBehaviour
             {
                 this.GetComponent<Animator>().SetBool("EnemyinRange", false);
                 atk = true;
-                this.GetComponent<ForwardMovement>().forward = PUnitManager.instance.enemy_pos;
+                this.GetComponent<ForwardMovement>().forward = EUnitManager.instance.enemy_pos;
             }
             else if (this.GetComponent<Animator>().GetBool("EnemyinRange") == false && this.GetComponent<overlapspere>().enemy_inrange) //공격 중이지 않지만 공격할 적이 있다.
             {
@@ -42,7 +42,7 @@ public class EUnit: MonoBehaviour
             }
             else if (this.GetComponent<Animator>().GetBool("EnemyinRange") == false && this.GetComponent<overlapspere>().enemy_inrange == false) //공격중도 아니고 공격할 적도 없다.
             {
-                this.GetComponent<ForwardMovement>().forward = PUnitManager.instance.enemy_pos;
+                this.GetComponent<ForwardMovement>().forward = EUnitManager.instance.enemy_pos;
                 //this.GetComponent<ForwardMovement>().speed = speed;
             }
             else // 공격중 공격할 적이 있다. 
