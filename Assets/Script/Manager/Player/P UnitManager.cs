@@ -48,7 +48,6 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
         pos_x = pos_y = pos_z = 0;
         foreach(PUnit u in units)
         {
-            Debug.Log("location");
             pos_x += u.transform.position.x;
             pos_y += u.transform.position.y;
             pos_z += u.transform.position.z;

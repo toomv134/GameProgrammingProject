@@ -50,25 +50,4 @@ public class overlapspere : MonoBehaviour
         //Vector3 leftDirection = Quaternion.Euler(0, -angle, 0) * transform.forward;
         //Gizmos.DrawRay(transform.position, leftDirection * distance);
     }
-
-    //private void FindcloseTarget()
-    //{
-    //    enemis = 
-    //    Transform closeTarget = null;
-    //    float maxDis = this.GetComponent<UnitInfo>().distance;
-
-    //    foreach (Transform enemy in enemis)
-    //    {
-    //        float targetDis = Vector3.Distance(transform.position, enemy.transform.position);
-
-    //        if (targetDis < maxDis)
-    //        {
-    //            closeTarget = enemy.transform;
-
-    //            maxDis = targetDis;
-    //        }
-    //    }
-
-    //    target = closeTarget;
-    //}
 }
