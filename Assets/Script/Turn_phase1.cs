@@ -42,7 +42,7 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
         if (phase1)
         {
             Day = TurnManager.instance.Day;
-            firstphase_turn.text = Day+" turn";
+            firstphase_turn.text = Day+"  Turn";
             firstphase_text.text = "Paladin : " + PUnitManager.instance.Paladin.ToString() +
             "\nLancer : " + PUnitManager.instance.Lancer.ToString() +
             "\nArcher : " + PUnitManager.instance.Archer.ToString() +
