@@ -64,16 +64,19 @@ public class TurnManager: MonoBehaviour
         }
         else
         {
+            
             Debug.Log("Phase1 start");
             Debug.Log(Day);
             Turn_phase1.instance.phase1 = true;
             thirdphase.SetActive(false);
             firstphase.SetActive(true);
+            Time.timeScale=0;
             
         }
     }
     public void Phase2() // °Ç¹° Áþ±â
     {
+        Time.timeScale = 1;
         firstphase.SetActive(false);
         secondphase.SetActive(true);
         Turn_phase1.instance.phase1 = false;
