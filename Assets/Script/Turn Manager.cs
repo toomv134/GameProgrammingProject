@@ -10,8 +10,14 @@ public class TurnManager: MonoBehaviour
 
     public float Day;
     public float Phase;
-    public GameObject firstphase;
-    public GameObject Xbutton;
+
+    [SerializeField] private GameObject firstphase;
+    [SerializeField] private GameObject firstXbutton;
+    [SerializeField] private GameObject secondphase;
+    [SerializeField] private GameObject secondXbutton;
+    [SerializeField] private GameObject thirdphase;
+    [SerializeField] private GameObject thirdXbutton;
+    [SerializeField] private GameObject thirdAttackbutton;
 
     private float Paladin;
     private float Lancer;
@@ -42,9 +48,8 @@ public class TurnManager: MonoBehaviour
 
     public void TurnStart()
     {
-        
-        Phase1();
         Day++;
+        Phase1();
     }
     public void TurnEnd()
     {
@@ -55,25 +60,30 @@ public class TurnManager: MonoBehaviour
         if (Day == 1) //첫날은 안보여줘도됨  
         {
             Debug.Log(Day);
+            Phase2();
         }
         else
         {
             Debug.Log("Phase1 start");
             Debug.Log(Day);
             Turn_phase1.instance.phase1 = true;
+            thirdphase.SetActive(false);
             firstphase.SetActive(true);
-            Xbutton.SetActive(true);
+            
         }
     }
     public void Phase2() // 건물 짓기
     {
-        Turn_phase1.instance.phase1 = false;
         firstphase.SetActive(false);
-        Xbutton.SetActive(false);
+        secondphase.SetActive(true);
+        Turn_phase1.instance.phase1 = false;
+        
         Debug.Log("Phase2 start");
     }
     public void Phase3() // 공격여부 결정
     {
+        secondphase.SetActive(false);
+        thirdphase.SetActive(true);
         
     }
 }
