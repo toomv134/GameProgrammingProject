@@ -8,6 +8,8 @@ public class Craft
     public string craftName;//이름
     public GameObject go_Prefab;//실제 설치될  프리팹.
     public GameObject go_PreviewPrefab;//미리보기 프리팹
+    public int[] craftNeedMP;
+    
 }
 public class CraftManual : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class CraftManual : MonoBehaviour
     private bool isActivated = false;
     private bool isPreviewActivated = false;
 
+    private int selectedSlotNumber;
     [SerializeField]
     private GameObject go_BaseUI;
 
@@ -48,7 +51,7 @@ public class CraftManual : MonoBehaviour
     public void SlotClick(int _slotNumber)
     {
         Vector3 mousePositionScreen = Input.mousePosition;
-
+        selectedSlotNumber = _slotNumber;
         // 마우스 좌표를 월드 좌표로 변환합니다.
         var mousePos = Input.mousePosition;
         if (firstCamera.enabled)
@@ -115,7 +118,7 @@ public class CraftManual : MonoBehaviour
         if (Physics.Raycast(mousePositionWorld, Vector3.down, out hitInfo, Mathf.Infinity, layerMask))
         {
             Vector3 _location = hitInfo.point;
-            Debug.Log($"Raycast {hitInfo.collider.gameObject.name}");
+            //Debug.Log($"Raycast {hitInfo.collider.gameObject.name}");
             go_Preview.transform.position = _location;
 
         }   
@@ -124,12 +127,25 @@ public class CraftManual : MonoBehaviour
     {
         if (isPreviewActivated && go_Preview.GetComponent<PreviewObject>().isBuildable())
         {
-            Instantiate(go_Prefab, hitInfo.point, Quaternion.identity);
-            Destroy(go_Preview);
-            isActivated = false;
-            isPreviewActivated = false;
-            go_Preview = null;
-            go_Prefab = null;
+            if (PResourceManager.instance.MP - craft_building[selectedSlotNumber].craftNeedMP[0] >= 0)
+            {
+                PResourceManager.instance.MP = PResourceManager.instance.MP - craft_building[selectedSlotNumber].craftNeedMP[0];
+                Instantiate(go_Prefab, hitInfo.point, Quaternion.identity);
+                Destroy(go_Preview);
+                isActivated = false;
+                isPreviewActivated = false;
+                go_Preview = null;
+                go_Prefab = null;
+            }
+            else
+            {
+                Debug.Log("돈이없습니다.");
+                Destroy(go_Preview);
+                isActivated = false;
+                isPreviewActivated = false;
+                go_Preview = null;
+                go_Prefab = null;
+            }
         }
     }
     private void Cancel()
