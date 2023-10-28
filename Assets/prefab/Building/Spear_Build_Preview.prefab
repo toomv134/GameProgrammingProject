@@ -1082,6 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerGround: 7
+  layerGround2: 6
   green: {fileID: 2100000, guid: 1387cabcedddbe14bae315694c2555b7, type: 2}
   red: {fileID: 2100000, guid: ee27e253cb306d14abb0bae43e33e732, type: 2}
 --- !u!23 &5869031577898413606

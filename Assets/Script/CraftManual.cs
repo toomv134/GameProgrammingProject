@@ -38,13 +38,13 @@ public class CraftManual : MonoBehaviour
     //RayCast 필요 변수 선언
     private RaycastHit hitInfo;
 
-    /* [SerializeField]
-     private LayerMask layerMask;*/
-    private int layerMask;
+     [SerializeField]
+     private LayerMask layerMask;
+    //private int layerMask;
 
     void Start()
     {
-        layerMask = 1 << 7;
+        
     }
 
 
@@ -150,7 +150,6 @@ public class CraftManual : MonoBehaviour
     }
     private void Cancel()
     {
-
         if(isPreviewActivated)
             Destroy(go_Preview);
         isActivated = false;
