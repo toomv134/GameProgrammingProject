@@ -15,4 +15,8 @@ public class PLancer : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        PUnitManager.instance.L_units.Remove(this);
+    }
 }

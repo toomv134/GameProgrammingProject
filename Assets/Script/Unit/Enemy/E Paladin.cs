@@ -15,4 +15,8 @@ public class EPaladin : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        EUnitManager.instance.P_units.Remove(this);
+    }
 }

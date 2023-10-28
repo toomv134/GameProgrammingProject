@@ -14,9 +14,30 @@ public class Life : MonoBehaviour
         //Debug.Log(amount);
         if (amount <= 0)
         {
-            Debug.Log("death");
-            this.GetComponent<Animator>().SetTrigger("IsDeath");
-            StartCoroutine(Death());
+            if (this.tag != "Building")
+            {
+                //Debug.Log("death");
+                this.GetComponent<Animator>().SetTrigger("IsDeath");
+                if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    Destroy(this.GetComponent<PUnit>());
+                }
+                else if (this.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                {
+                    Destroy(this.GetComponent<EUnit>());
+                }
+                if (this.tag == "Archer")
+                {
+                    Destroy(this.GetComponent<ShootArrow>());
+                }
+                Destroy(this.GetComponent<SphereCollider>());
+                Destroy(this.GetComponent<Rigidbody>());
+                StartCoroutine(Death());
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -24,7 +45,7 @@ public class Life : MonoBehaviour
     {
         
         //Debug.Log("death");
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(3.0f);
         Destroy(gameObject);
     }
 }

@@ -15,4 +15,9 @@ public class PArcher : MonoBehaviour
     {
         
     }
+
+    private void OnDestroy()
+    {
+        PUnitManager.instance.A_units.Remove(this);
+    }
 }

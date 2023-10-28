@@ -7,6 +7,8 @@ TagManager:
   - Sword
   - Bow
   - enemy
+  - Archer
+  - Building
   layers:
   - Default
   - TransparentFX

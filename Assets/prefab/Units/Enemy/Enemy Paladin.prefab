@@ -106,6 +106,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4640622452108022354}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ff582d2e83f63d4bb17180280c9b50a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6191535390850589186}
   m_SourcePrefab: {fileID: 100100000, guid: 6ff582d2e83f63d4bb17180280c9b50a, type: 3}
 --- !u!1 &4150432221431952271 stripped
 GameObject:
@@ -127,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 3
   damage: 1
+  atk: 1
 --- !u!135 &-6946901239731006052
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -202,9 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1000
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &4640622452108022354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +228,15 @@ MonoBehaviour:
   enemy_inrange: 0
   angle: 45
   distance: 3
+--- !u!114 &6191535390850589186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150432221431952271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c0a766ed3e27b4189f5b5be9a54c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
