@@ -311,5 +311,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abeed9c5be9f4a144b2de9c831c846e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 626424037158238295, guid: a6298c8fbb49317408664404493b1485, type: 3}
+  prefab: {fileID: 626424037158238295, guid: fe39b64715f8b2c4ab8c989570c6614c, type: 3}
   shootpoint: {fileID: 3082904831402567531}
