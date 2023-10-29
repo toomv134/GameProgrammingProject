@@ -18,6 +18,7 @@ public class Life : MonoBehaviour
         {
             if (this.tag != "Building")
             {
+
                 //Debug.Log("death");
                 this.GetComponent<Animator>().SetTrigger("IsDeath");
                 if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -45,7 +46,10 @@ public class Life : MonoBehaviour
 
     IEnumerator Death()
     {
+        audioSource.Stop();
         audioSource.clip = death_clip;
+        audioSource.loop = false;
+        audioSource.time = 0;
         audioSource.Play();
         //Debug.Log("death");
         yield return new WaitForSecondsRealtime(3.0f);
