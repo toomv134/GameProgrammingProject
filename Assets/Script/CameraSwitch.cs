@@ -12,7 +12,8 @@ public class CameraSwitch : MonoBehaviour
     private float cnt = 0;
     private bool isTransitioning = false;
     private float transitionStartTime;
-    float dragSpeed = 300.0f;
+    private float dragSpeed = 150.0f;
+    private float attackdragSpeed = 1000f;
     void Start()
     {
         // 초기 화면 설정
@@ -52,7 +53,7 @@ public class CameraSwitch : MonoBehaviour
         {
             movingCamera.transform.position = BlooshedCamera.transform.position;
         }
-        if (Input.GetKeyDown(KeyCode.Q) && !isTransitioning)
+        if (Input.GetKeyDown(KeyCode.Q) && !isTransitioning && cnt == 0)
         {
             if (firstCamera.enabled)//1 짓기 화면이 켜있다면
             {
@@ -71,7 +72,7 @@ public class CameraSwitch : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning)
+        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning&&cnt==0)
         {
             if (secondCamera.enabled)
             {
@@ -114,7 +115,9 @@ public class CameraSwitch : MonoBehaviour
 
         while (isTransitioning)
         {
-            float distanceCovered = (Time.time - startTime) * dragSpeed;
+            float distanceCovered;
+            if(cnt==0)distanceCovered = (Time.time - startTime) * dragSpeed;
+            else distanceCovered = (Time.time - startTime) * attackdragSpeed;
             float journeyFraction = distanceCovered / journeyLength;
             movingCamera.transform.position = Vector3.Lerp(initialPosition, targerPosition, journeyFraction);
             movingCamera.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, journeyFraction);
