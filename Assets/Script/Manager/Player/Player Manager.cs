@@ -9,7 +9,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject ResourceManger;
     public GameObject BuildingManger;
     public GameObject UnitManger;
-    public bool Attack;
+    public bool Attack = false;
+    public float attackday;
     private void Awake()
     {
         if (instance == null)

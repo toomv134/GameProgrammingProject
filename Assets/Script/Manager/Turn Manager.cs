@@ -61,6 +61,7 @@ public class TurnManager: MonoBehaviour
     }
     public void Phase1() //전날이랑 비교
     {
+        GameManager.instance.Phase = 1;
         if (Day == 1) //첫날은 안보여줘도됨  
         {
             Debug.Log(Day);
@@ -84,11 +85,12 @@ public class TurnManager: MonoBehaviour
         firstphase.SetActive(false);
         secondphase.SetActive(true);
         Turn_phase1.instance.phase1 = false;
-        
+        GameManager.instance.Phase = 2;
         Debug.Log("Phase2 start");
     }
     public void Phase3() // 공격여부 결정
     {
+        GameManager.instance.Phase = 3;
         Time.timeScale = 0;
         secondphase.SetActive(false);
         thirdphase.SetActive(true);

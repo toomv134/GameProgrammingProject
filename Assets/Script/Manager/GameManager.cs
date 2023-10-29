@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManagaer : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GameManagaer instance;
+    public static GameManager instance;
 
     public GameObject Player;
     public GameObject Enemy;
@@ -29,6 +29,7 @@ public class GameManagaer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //if (Player.GetComponent<Life>().amount <= 0) //Player lose
         //{
 
