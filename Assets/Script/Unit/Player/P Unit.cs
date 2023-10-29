@@ -8,7 +8,10 @@ public class PUnit: MonoBehaviour
     public float distance; //unit attack range
     public float damage; // unit attack damage
     public bool atk = true;
-   // public float hp; //unit HP
+    public AudioSource audioSource;
+    public AudioClip attack_clip;
+    public AudioClip hurt_clip;
+    // public float hp; //unit HP
 
     GameObject obj;
 
@@ -80,13 +83,19 @@ public class PUnit: MonoBehaviour
     IEnumerator Attack()
     {
         bool at = true;
+        audioSource.clip = attack_clip;
+        audioSource.Play();
         yield return new WaitForSecondsRealtime(1.0f);
         if (at) {
             //Debug.Log("hit");
             if(this.GetComponent<overlapspere>().target.tag != "Building")
             {
+                audioSource.Stop();
+                audioSource.clip = hurt_clip;
+                audioSource.Play();
                 this.GetComponent<overlapspere>().target.GetComponent<Animator>().SetTrigger("IsHit");
             }
+            
             this.GetComponent<overlapspere>().target.GetComponent<Life>().amount -= damage;
             StartCoroutine(Attack());
             at = false;

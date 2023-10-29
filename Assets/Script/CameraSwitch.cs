@@ -13,7 +13,7 @@ public class CameraSwitch : MonoBehaviour
     private bool isTransitioning = false;
     private float transitionStartTime;
     private float dragSpeed = 150.0f;
-    private float attackdragSpeed = 1000f;
+    private float attackdragSpeed = 2000f;
     void Start()
     {
         // 초기 화면 설정
