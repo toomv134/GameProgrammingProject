@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             //처음 군량 2배
             Debug.Log("레오");
-            PResourceManager.instance.MP = 1000;
+            PResourceManager.instance.MP = 400;
         }
         else if (person == 1)
         {
