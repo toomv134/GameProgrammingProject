@@ -9,9 +9,9 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     private float pos_x;
     private float pos_y;
     private float pos_z;
-    public float Paladin;
-    public float Lancer;
-    public float Archer;
+    public int Paladin;
+    public int Lancer;
+    public int Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
     private float TurnChange;
@@ -29,6 +29,7 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     }
     private void Start()
     {
+        fortress = true;
         Paladin = 0;
         Lancer = 0;
         Archer = 0;

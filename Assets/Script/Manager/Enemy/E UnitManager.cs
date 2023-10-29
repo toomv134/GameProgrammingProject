@@ -8,9 +8,9 @@ public class EUnitManager : MonoBehaviour
     private float pos_x;
     private float pos_y;
     private float pos_z;
-    public float Paladin;
-    public float Lancer;
-    public float Archer;
+    public int Paladin;
+    public int Lancer;
+    public int Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
     private float TurnChange;
@@ -27,6 +27,14 @@ public class EUnitManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
+    private void Start()
+    {
+        fortress = true;
+        Paladin = 0;
+        Lancer = 0;
+        Archer = 0;
+        TurnChange = TurnManager.instance.Day;
+    }
 
     public List<EUnit> units;
     public List<EPaladin> P_units;

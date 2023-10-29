@@ -8,18 +8,25 @@ public class PArcherSpawn : MonoBehaviour
 
     BoxCollider rangeCollider;
     public GameObject unit;
-    public float num;
+    public int num;
     private void Start()
     {
-        StartCoroutine(RandomRespawn_Coroutine());
+        //StartCoroutine(RandomRespawn_Coroutine());
     }
 
-    IEnumerator RandomRespawn_Coroutine()
+    private void Update()
     {
-        for(float i =0;i<num;i++)
+        if (num > 0) // 스폰 한번만
         {
-            yield return new WaitForSeconds(0);
+            RandomSpawn(num);
+            num = 0;
+        }
+    }
 
+    private void RandomSpawn(int n)
+    {
+        for (int i = 0; i < num; i++)
+        {
             GameObject instantUnit = Instantiate(unit, Return_RandomPosition(), Quaternion.identity);
         }
     }
