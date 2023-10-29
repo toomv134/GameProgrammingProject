@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             //처음 군량 2배
             Debug.Log("레오");
-            EResourceManager.instance.MP = 1000;
+            EResourceManager.instance.MP = 400;
         }
         else if (AI_choose == 1)
         {
