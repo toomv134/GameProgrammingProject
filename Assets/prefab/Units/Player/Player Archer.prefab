@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 15
-  damage: 10
+  damage: 30
   atk: 1
 --- !u!135 &-5673919564422686921
 SphereCollider:

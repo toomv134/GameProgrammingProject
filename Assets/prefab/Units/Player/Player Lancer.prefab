@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 6
-  damage: 5
+  damage: 50
   atk: 1
 --- !u!135 &1177435582302533421
 SphereCollider:
@@ -301,9 +301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 400
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5417829055419689162
 MonoBehaviour:
   m_ObjectHideFlags: 0
