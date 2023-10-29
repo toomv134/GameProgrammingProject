@@ -16,7 +16,7 @@ public class CameraSwitch : MonoBehaviour
     private bool isTransitioning = false;
     private float transitionStartTime;
     private float dragSpeed = 150.0f;
-    private float attackdragSpeed = 2000f;
+    private float attackdragSpeed = 1000f;
     void Start()
     {
         // 초기 화면 설정
@@ -111,8 +111,8 @@ public class CameraSwitch : MonoBehaviour
             PlayerAttack1Camera.enabled = false;
             PlayerAttack2Camera.enabled = false;
             mainCamera.enabled = true;
+            StartCoroutine(FastTransitionCameras(toMain, toMainRotate));
             cnt = 0;
-            StartCoroutine(TransitionCameras(toMain, toMainRotate));
         }
         if (TurnManager.instance.StartWar && cnt == 0)
 
@@ -133,7 +133,7 @@ public class CameraSwitch : MonoBehaviour
             {
                 case 0:
                     BlooshedCamera.enabled = true;
-                    StartCoroutine(TransitionCameras(toBlooshed, toBlooshedRotate));
+                    StartCoroutine(FastTransitionCameras(toBlooshed, toBlooshedRotate));
                     break;
                 case 1:
                     PlayerAttack1Camera.enabled = true;
@@ -168,8 +168,8 @@ public class CameraSwitch : MonoBehaviour
         while (isTransitioning)
         {
             float distanceCovered;
-            if (cnt == 0) distanceCovered = (Time.time - startTime) * dragSpeed;
-            else distanceCovered = (Time.time - startTime) * attackdragSpeed;
+            distanceCovered = (Time.time - startTime) * dragSpeed;
+            
             float journeyFraction = distanceCovered / journeyLength;
             movingCamera.transform.position = Vector3.Lerp(initialPosition, targerPosition, journeyFraction);
             movingCamera.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, journeyFraction);
@@ -180,8 +180,32 @@ public class CameraSwitch : MonoBehaviour
             }
             yield return null;
         }
-        // 전환 완료 후
 
+    }
+    IEnumerator FastTransitionCameras(Vector3 targerPosition, Quaternion targetRotation)
+    {
+        isTransitioning = true;
+        movingCamera.enabled = true;
+        Vector3 initialPosition = movingCamera.transform.position;
+        Quaternion initialRotation = movingCamera.transform.rotation;
+
+        float startTime = Time.time;
+        float journeyLength = Vector3.Distance(initialPosition, targerPosition);
+        while (isTransitioning)
+        {
+            float distanceCovered;
+            
+            distanceCovered = (Time.time - startTime) * attackdragSpeed;
+            float journeyFraction = distanceCovered / journeyLength;
+            movingCamera.transform.position = Vector3.Lerp(initialPosition, targerPosition, journeyFraction);
+            movingCamera.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, journeyFraction);
+            if (journeyFraction >= 1.0f)
+            {
+                movingCamera.enabled = false;
+                isTransitioning = false;
+            }
+            yield return null;
+        }
 
     }
 }
