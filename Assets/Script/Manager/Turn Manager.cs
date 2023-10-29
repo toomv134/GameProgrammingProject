@@ -68,7 +68,7 @@ public class TurnManager: MonoBehaviour
         }
         else
         {
-            
+            Time.timeScale = 1;
             Debug.Log("Phase1 start");
             Debug.Log(Day);
             Turn_phase1.instance.phase1 = true;
@@ -89,6 +89,7 @@ public class TurnManager: MonoBehaviour
     }
     public void Phase3() // 공격여부 결정
     {
+        Time.timeScale = 0;
         secondphase.SetActive(false);
         thirdphase.SetActive(true);
         
