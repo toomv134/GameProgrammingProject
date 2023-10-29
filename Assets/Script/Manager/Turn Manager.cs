@@ -142,11 +142,12 @@ public class TurnManager: MonoBehaviour
     {
         if (!EUnitManager.instance.castle)
         {
-            //½Â¸®
+            SceneManager.LoadScene("Win");
             Debug.Log("½Â¸®");
         }
         else if (!PUnitManager.instance.castle)
         {
+            SceneManager.LoadScene("Lose");
             Debug.Log("ÆÐ¹è");
             //ÆÐ¹è
         }
