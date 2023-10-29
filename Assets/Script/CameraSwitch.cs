@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class CameraSwitch : MonoBehaviour
 {
     public Camera mainCamera;
@@ -13,10 +12,6 @@ public class CameraSwitch : MonoBehaviour
     public Camera EnemyAttack2Camera;
     public Camera PlayerAttack1Camera;
     public Camera PlayerAttack2Camera;
-
-
-
-
     private float cnt = 0;
     private bool isTransitioning = false;
     private float transitionStartTime;
@@ -30,14 +25,13 @@ public class CameraSwitch : MonoBehaviour
         secondCamera.enabled = false;
         movingCamera.enabled = false;
         BlooshedCamera.enabled = false;
-        EnemyAttack1Camera.enabled = false ;
-        EnemyAttack2Camera.enabled=false;
-        PlayerAttack1Camera.enabled=false;
+        EnemyAttack1Camera.enabled = false;
+        EnemyAttack2Camera.enabled = false;
+        PlayerAttack1Camera.enabled = false;
         PlayerAttack2Camera.enabled = false;
-    movingCamera.transform.position=mainCamera.transform.position;
+        movingCamera.transform.position = mainCamera.transform.position;
         movingCamera.transform.rotation = mainCamera.transform.rotation;
     }
-
     void Update()
     {
         Vector3 toMain = mainCamera.transform.position;
@@ -45,10 +39,9 @@ public class CameraSwitch : MonoBehaviour
         Vector3 toSecond = secondCamera.transform.position;
         Vector3 toBlooshed = BlooshedCamera.transform.position;
         Vector3 toEnemyAttack1 = EnemyAttack1Camera.transform.position;
-        Vector3 toEnemyAttack2=EnemyAttack2Camera.transform.position;
-        Vector3 toPlayerAttack1=PlayerAttack1Camera.transform.position;
-        Vector3 toPlayerAttack2=PlayerAttack2Camera.transform.position;
-
+        Vector3 toEnemyAttack2 = EnemyAttack2Camera.transform.position;
+        Vector3 toPlayerAttack1 = PlayerAttack1Camera.transform.position;
+        Vector3 toPlayerAttack2 = PlayerAttack2Camera.transform.position;
         Quaternion toMainRotate = mainCamera.transform.rotation;
         Quaternion toFirstRotate = firstCamera.transform.rotation;
         Quaternion toSecondRotate = secondCamera.transform.rotation;
@@ -61,7 +54,7 @@ public class CameraSwitch : MonoBehaviour
         {
             movingCamera.transform.position = mainCamera.transform.position;
         }
-        else if(secondCamera.enabled)
+        else if (secondCamera.enabled)
         {
             movingCamera.transform.position = secondCamera.transform.position;
         }
@@ -88,11 +81,10 @@ public class CameraSwitch : MonoBehaviour
                 mainCamera.enabled = false;
                 firstCamera.enabled = true;
                 StartCoroutine(TransitionCameras(toFirst, toFirstRotate));
-               
-            }
 
+            }
         }
-        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning&&cnt==0)
+        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning && cnt == 0)
         {
             if (secondCamera.enabled)
             {
@@ -100,7 +92,7 @@ public class CameraSwitch : MonoBehaviour
                 secondCamera.enabled = false;
                 firstCamera.enabled = false;
                 StartCoroutine(TransitionCameras(toMain, toMainRotate));
-               
+
             }
             else
             {
@@ -109,9 +101,9 @@ public class CameraSwitch : MonoBehaviour
                 secondCamera.enabled = true;
                 StartCoroutine(TransitionCameras(toSecond, toSecondRotate));
             }
-            
+
         }
-        if ((!TurnManager.instance.Onattack || !EnemyManager.instance.Attack) && cnt == 0)
+        if (!TurnManager.instance.StartWar && cnt == 1)
         {
             BlooshedCamera.enabled = false;
             EnemyAttack1Camera.enabled = false;
@@ -122,7 +114,8 @@ public class CameraSwitch : MonoBehaviour
             cnt = 0;
             StartCoroutine(TransitionCameras(toMain, toMainRotate));
         }
-        if ((TurnManager.instance.Onattack || EnemyManager.instance.Attack) && cnt == 0)
+        if (TurnManager.instance.StartWar && cnt == 0)
+
         {
             cnt = 1;
             Debug.Log("change");
@@ -134,7 +127,8 @@ public class CameraSwitch : MonoBehaviour
             EnemyAttack2Camera.enabled = false;
             PlayerAttack1Camera.enabled = false;
             PlayerAttack2Camera.enabled = false;
-            
+            Debug.Log(BattleManager.instance.cameranum);
+
             switch (BattleManager.instance.cameranum)
             {
                 case 0:
@@ -152,39 +146,33 @@ public class CameraSwitch : MonoBehaviour
                 case 3:
                     EnemyAttack1Camera.enabled = true;
                     StartCoroutine(TransitionCameras(toEnemyAttack1, toEnemyAttack1Rotate));
-
                     break;
                 case 4:
                     EnemyAttack2Camera.enabled = true;
                     StartCoroutine(TransitionCameras(toEnemyAttack2, toEnemyAttack2Rotate));
-
                     break;
                 default:
                     break;
             }
-
         }
     }
-
-    IEnumerator TransitionCameras(Vector3 targerPosition,Quaternion targetRotation)
+    IEnumerator TransitionCameras(Vector3 targerPosition, Quaternion targetRotation)
     {
         isTransitioning = true;
         movingCamera.enabled = true;
         Vector3 initialPosition = movingCamera.transform.position;
         Quaternion initialRotation = movingCamera.transform.rotation;
-        
+
         float startTime = Time.time;
         float journeyLength = Vector3.Distance(initialPosition, targerPosition);
-
         while (isTransitioning)
         {
             float distanceCovered;
-            if(cnt==0)distanceCovered = (Time.time - startTime) * dragSpeed;
+            if (cnt == 0) distanceCovered = (Time.time - startTime) * dragSpeed;
             else distanceCovered = (Time.time - startTime) * attackdragSpeed;
             float journeyFraction = distanceCovered / journeyLength;
             movingCamera.transform.position = Vector3.Lerp(initialPosition, targerPosition, journeyFraction);
             movingCamera.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, journeyFraction);
-
             if (journeyFraction >= 1.0f)
             {
                 movingCamera.enabled = false;
@@ -192,9 +180,8 @@ public class CameraSwitch : MonoBehaviour
             }
             yield return null;
         }
-
         // 전환 완료 후
-        
-     
+
+
     }
 }

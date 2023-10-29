@@ -28,7 +28,7 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((TurnManager.instance.Onattack||EnemyManager.instance.Attack)&&cnt==0)
+        if (TurnManager.instance.StartWar &&cnt==0)
         {
             cnt = 1;
             Debug.Log("BMstart");
@@ -71,7 +71,7 @@ public class BattleManager : MonoBehaviour
                     {
                         EUnitManager.instance.units.Add(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
                     }
-                    EnemyManager.instance.Attack = false;
+                    
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -82,7 +82,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
-                    EnemyManager.instance.Attack = false;
+                    
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -92,7 +92,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
-                    EnemyManager.instance.Attack = false;
+                    
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -102,7 +102,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
-                    EnemyManager.instance.Attack = false;
+                    
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -112,7 +112,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
-                    EnemyManager.instance.Attack = false;
+                    
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -153,7 +153,7 @@ public class BattleManager : MonoBehaviour
     
     private void selectPlace()
     {
-        if (TurnManager.instance.Onattack && EnemyManager.instance.Attack) //attack both 평야
+        if (TurnManager.instance.Onattack && TurnManager.instance.EnemyAttack) //attack both 평야
         {
             cameranum = 0;
             //카메라 옮기기
@@ -193,7 +193,7 @@ public class BattleManager : MonoBehaviour
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<PPaladinSpawn>().num = PUnitManager.instance.Paladin;
             }
         }
-        else if (EnemyManager.instance.Attack) //enemy attack, player don't
+        else if (TurnManager.instance.EnemyAttack) //enemy attack, player don't
         {
             Debug.Log("공격왔음");
             if (PUnitManager.instance.fortress)

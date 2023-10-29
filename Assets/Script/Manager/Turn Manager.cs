@@ -20,7 +20,8 @@ public class TurnManager: MonoBehaviour
     [SerializeField] private GameObject thirdAttackbutton;
 
     public bool Onattack=false;
-
+    public bool EnemyAttack = false;
+    public bool StartWar = false;
     private float Paladin;
     private float Lancer;
     private float Archer;
@@ -50,8 +51,10 @@ public class TurnManager: MonoBehaviour
 
     public void TurnStart()
     {
-        Day++;
-        Phase1();
+
+            Day++;
+            Phase1();
+        
     }
     public void TurnEnd()
     {
@@ -103,7 +106,8 @@ public class TurnManager: MonoBehaviour
         if (attackday > 0) //can't attack 
         {
             Debug.Log("cannot attack");
-            noattack();
+            
+            Phase3();
         }
         else if (PUnitManager.instance.Archer + PUnitManager.instance.Lancer + PUnitManager.instance.Paladin <= 0)
         {
@@ -113,20 +117,26 @@ public class TurnManager: MonoBehaviour
         else
         {
             Debug.Log("attack");
-            thirdphase.SetActive(false);
-            Time.timeScale = 1;
             Onattack = true;
             attackday = 3;
+            checkAttacked();
         }
         //BattleManager.instance.phase3 = true; //버튼 누르고 실행
     }
-
-    public void noattack()
+    public void checkAttacked()
     {
-        Debug.Log("no attack");
-        Phase3();
-        
+        if (EnemyAttack||Onattack)
+        {
+            thirdphase.SetActive(false);
+            Time.timeScale = 1;
+            StartWar = true;
+        }
+        else
+        {
+            TurnStart();
+        }
     }
+
     //BattleManager.instance.phase3 = true; //버튼 누르고 실행
     public void checkWinorLose()
     {
@@ -142,7 +152,9 @@ public class TurnManager: MonoBehaviour
         }
         else
         {
+            StartWar = false;
             Onattack = false;
+            EnemyAttack = false;
             TurnStart();
         }
     }
