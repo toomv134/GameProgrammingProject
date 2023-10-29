@@ -13,12 +13,12 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerManager.instance.Attack && EnemyManager.instance.Attack) //attack both
+        if(TurnManager.instance.Onattack && EnemyManager.instance.Attack) //attack both
         {
             //평야에 있는 스포너에 유닛 할당
             
         }
-        else if (PlayerManager.instance.Attack) // player attack, enemy don't
+        else if (TurnManager.instance.Onattack) // player attack, enemy don't
         {
 
         }

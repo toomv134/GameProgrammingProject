@@ -10,7 +10,7 @@ public class TurnManager: MonoBehaviour
 
     public float Day;
     public float Phase;
-
+    public float attackday=0;
     [SerializeField] private GameObject firstphase;
     [SerializeField] private GameObject firstXbutton;
     [SerializeField] private GameObject secondphase;
@@ -63,6 +63,7 @@ public class TurnManager: MonoBehaviour
     }
     public void Phase1() //Àü³¯ÀÌ¶û ºñ±³
     {
+        attackday -= 1;
         GameManager.instance.Phase = 1;
         if (Day == 1) //Ã¹³¯Àº ¾Èº¸¿©ÁàµµµÊ  
         {
@@ -100,9 +101,27 @@ public class TurnManager: MonoBehaviour
     }
     public void Attack()
     {
-        thirdphase.SetActive(false);
-        Time.timeScale = 1;
-        Onattack = true;
+        if (attackday > 0) //can't attack 
+        {
+            Debug.Log("cannot attack");
+            noattack();
+        }
+        else
+        {
+            Debug.Log("attack");
+            thirdphase.SetActive(false);
+            Time.timeScale = 1;
+            Onattack = true;
+            attackday = 3;
+        }
+
     }
+
+    public void noattack()
+    {
+        Debug.Log("no attack");
+        Phase3();
+    }
+
 
 }
