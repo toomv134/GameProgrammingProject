@@ -82,6 +82,10 @@ public class BattleManager : MonoBehaviour
                     
                     ReturnArmy();
                     makefieldArmyzero();
+                    if (!EUnitManager.instance.fortress)
+                    {
+                        destroyEnemyfortress();
+                    }
                     cnt = 0;
                     cameranum = -1;
                     
@@ -104,6 +108,10 @@ public class BattleManager : MonoBehaviour
                 {
                     ReturnArmy();
                     makefieldArmyzero();
+                    if (!PUnitManager.instance.fortress)
+                    {
+                        destroyPlayerfortress();
+                    }
                     cnt = 0;
                     cameranum = -1;
                     
@@ -125,7 +133,56 @@ public class BattleManager : MonoBehaviour
                 break;
         }
     }
+    private void destroyEnemyfortress()
+    {
+        for (int i = EBuildingManager.instance.Fortress_A_building.Count - 1; i >= 0; i--)
+        {
+            
+            Destroy(EBuildingManager.instance.Fortress_A_building[i].gameObject);
+            EBuildingManager.instance.Fortress_A_building.RemoveAt(i);
+        }
+        for (int i = EBuildingManager.instance.Fortress_R_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(EBuildingManager.instance.Fortress_R_building[i].gameObject);
+            EBuildingManager.instance.Fortress_R_building.RemoveAt(i);
+        }
+        for (int i = EBuildingManager.instance.Fortress_L_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(EBuildingManager.instance.Fortress_L_building[i].gameObject);
 
+            EBuildingManager.instance.Fortress_L_building.RemoveAt(i);
+        }
+        for (int i = EBuildingManager.instance.Fortress_P_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(EBuildingManager.instance.Fortress_P_building[i].gameObject);
+            EBuildingManager.instance.Fortress_P_building.RemoveAt(i);
+        }
+        
+        EUnitManager.instance.units.Remove(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
+    }
+    private void destroyPlayerfortress()
+    {
+        for (int i = PBuildingManager.instance.Fortress_A_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(PBuildingManager.instance.Fortress_A_building[i].gameObject);
+            PBuildingManager.instance.Fortress_A_building.RemoveAt(i);
+        }
+        for (int i = PBuildingManager.instance.Fortress_R_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(PBuildingManager.instance.Fortress_R_building[i].gameObject);
+            PBuildingManager.instance.Fortress_R_building.RemoveAt(i);
+        }
+        for (int i = PBuildingManager.instance.Fortress_L_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(PBuildingManager.instance.Fortress_L_building[i].gameObject);
+            PBuildingManager.instance.Fortress_L_building.RemoveAt(i);
+        }
+        for (int i = PBuildingManager.instance.Fortress_P_building.Count - 1; i >= 0; i--)
+        {
+            Destroy(PBuildingManager.instance.Fortress_P_building[i].gameObject);
+            PBuildingManager.instance.Fortress_P_building.RemoveAt(i);
+        }
+    }
     private void ReturnArmy()
     {
         EUnitManager.instance.Archer = EUnitManager.instance.A_units.Count;
@@ -149,19 +206,19 @@ public class BattleManager : MonoBehaviour
     { 
             for (int i = PUnitManager.instance.P_units.Count - 1; i >= 0; i--)
             {
-            Debug.Log("角青");
+            //Debug.Log("角青");
             Destroy(PUnitManager.instance.P_units[i].gameObject);
             //Destroy(PUnitManager.instance.P_units[i]);
         }
         for (int i = PUnitManager.instance.A_units.Count - 1; i >= 0; i--)
         {
-            Debug.Log("角青");
+            //  Debug.Log("角青");
             Destroy(PUnitManager.instance.A_units[i].gameObject);
             //Destroy(PUnitManager.instance.P_units[i]);
         }
         for (int i = PUnitManager.instance.L_units.Count - 1; i >= 0; i--)
         {
-            Debug.Log("角青");
+            //   Debug.Log("角青");
             Destroy(PUnitManager.instance.L_units[i].gameObject);
             //Destroy(PUnitManager.instance.P_units[i]);
         }
@@ -169,19 +226,19 @@ public class BattleManager : MonoBehaviour
 
         for (int i = EUnitManager.instance.P_units.Count - 1; i >= 0; i--)
         {
-            Debug.Log("角青");
+            // Debug.Log("角青");
             Destroy(EUnitManager.instance.P_units[i].gameObject);
             //Destroy(PUnitManager.instance.P_units[i]);
         }
         for (int i = EUnitManager.instance.A_units.Count - 1; i >= 0; i--)
         {
-            Debug.Log("角青");
+            // Debug.Log("角青");
             Destroy(EUnitManager.instance.A_units[i].gameObject);
             //Destroy(PUnitManager.instance.P_units[i]);
         }
         for (int i = EUnitManager.instance.L_units.Count - 1; i >= 0; i--)
         {
-            Debug.Log("角青");
+            // Debug.Log("角青");
             Destroy(EUnitManager.instance.L_units[i].gameObject);
             //Destroy(PUnitManager.instance.P_units[i]);
         }

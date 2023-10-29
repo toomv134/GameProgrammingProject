@@ -43,10 +43,10 @@ public class Turn_phase1 : MonoBehaviour //전날이랑 비교
         {
             Day = TurnManager.instance.Day;
             firstphase_turn.text = Day+"  Day";
-            firstphase_text.text = "What do I have...\n"+ PBuildingManager.instance.R_building.Count.ToString()+" Granary\n" +
-                   PBuildingManager.instance.P_building.Count.ToString() + " Sword Building\n" +
-             PBuildingManager.instance.L_building.Count.ToString() + " Lancer Building\n" +
-            PBuildingManager.instance.A_building.Count.ToString() + " Archer Building\n";
+            firstphase_text.text = "What do I have...\n"+ (PBuildingManager.instance.R_building.Count+PBuildingManager.instance.Fortress_R_building.Count)+" Granary\n" +
+                   (PBuildingManager.instance.P_building.Count+PBuildingManager.instance.Fortress_P_building.Count)+ " Sword Building\n" +
+             (PBuildingManager.instance.A_building.Count + PBuildingManager.instance.Fortress_A_building.Count) + " Archer Building\n" +
+            (PBuildingManager.instance.L_building.Count + PBuildingManager.instance.Fortress_L_building.Count) + " Lancer Building\n";
 
         }
         else

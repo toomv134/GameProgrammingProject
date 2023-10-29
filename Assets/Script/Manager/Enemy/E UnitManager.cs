@@ -89,9 +89,9 @@ public class EUnitManager : MonoBehaviour
 
     private void TurnChangeGainArmy()
     {
-        Paladin += EBuildingManager.instance.P_building.Count * 3;
-        Lancer += EBuildingManager.instance.L_building.Count * 3;
-        Archer += EBuildingManager.instance.A_building.Count * 3;
+        Paladin += (EBuildingManager.instance.P_building.Count+ EBuildingManager.instance.Fortress_P_building.Count) * 3;
+        Lancer += (EBuildingManager.instance.L_building.Count + EBuildingManager.instance.Fortress_L_building.Count) * 3;
+        Archer += (EBuildingManager.instance.A_building.Count + EBuildingManager.instance.Fortress_A_building.Count) * 3;
     }
     public void destroyarmy()
     {

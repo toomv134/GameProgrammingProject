@@ -148,7 +148,7 @@ public class CraftManual : MonoBehaviour
             }
         }
     }
-    private void Cancel()
+    public void Cancel()
     {
         if(isPreviewActivated)
             Destroy(go_Preview);
