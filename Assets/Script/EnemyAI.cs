@@ -32,15 +32,13 @@ public class EnemyAI : MonoBehaviour
         if (TurnManager.instance.Day > Day)
         {
             Debug.Log("AI act");
-            StartCoroutine(AIact());
+            Alact();
             Day = TurnManager.instance.Day;
         }
         
     }
 
-    IEnumerator AIact()
-    {
-        yield return null;
+    private void Alact() {
         //처음 시작 200원 시작
         switch (Day)
         {
@@ -55,7 +53,7 @@ public class EnemyAI : MonoBehaviour
             //Day 3 창   공격x
             case 3:
                 Instantiate(LancerBuilding, position3, Quaternion.identity);
-                EnemyManager.instance.Attack = false;
+                
                 break;
             //Day 4 자원
             case 4:
@@ -104,5 +102,6 @@ public class EnemyAI : MonoBehaviour
                 break;
 
         }
+        
     }
 }

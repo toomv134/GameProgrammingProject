@@ -28,13 +28,14 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TurnManager.instance.Onattack&&cnt==0)
+        if ((TurnManager.instance.Onattack||EnemyManager.instance.Attack)&&cnt==0)
         {
             cnt = 1;
             Debug.Log("BMstart");
             selectPlace();
             
         }
+       
      
     }
     private void LateUpdate()
@@ -70,6 +71,7 @@ public class BattleManager : MonoBehaviour
                     {
                         EUnitManager.instance.units.Add(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
                     }
+                    EnemyManager.instance.Attack = false;
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -80,6 +82,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
+                    EnemyManager.instance.Attack = false;
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -89,6 +92,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
+                    EnemyManager.instance.Attack = false;
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -98,6 +102,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
+                    EnemyManager.instance.Attack = false;
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -107,6 +112,7 @@ public class BattleManager : MonoBehaviour
                     ReturnArmy();
                     makefieldArmyzero();
                     cameranum = -1;
+                    EnemyManager.instance.Attack = false;
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -189,6 +195,7 @@ public class BattleManager : MonoBehaviour
         }
         else if (EnemyManager.instance.Attack) //enemy attack, player don't
         {
+            Debug.Log("공격왔음");
             if (PUnitManager.instance.fortress)
             { //2차성루 안부서졌음
                 cameranum = 3;

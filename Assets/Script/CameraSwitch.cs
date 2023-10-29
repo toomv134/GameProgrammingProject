@@ -111,7 +111,7 @@ public class CameraSwitch : MonoBehaviour
             }
             
         }
-        if (!TurnManager.instance.Onattack && cnt == 1)
+        if ((!TurnManager.instance.Onattack || !EnemyManager.instance.Attack) && cnt == 0)
         {
             BlooshedCamera.enabled = false;
             EnemyAttack1Camera.enabled = false;
@@ -122,7 +122,7 @@ public class CameraSwitch : MonoBehaviour
             cnt = 0;
             StartCoroutine(TransitionCameras(toMain, toMainRotate));
         }
-        if (TurnManager.instance.Onattack&&cnt==0)
+        if ((TurnManager.instance.Onattack || EnemyManager.instance.Attack) && cnt == 0)
         {
             cnt = 1;
             Debug.Log("change");
