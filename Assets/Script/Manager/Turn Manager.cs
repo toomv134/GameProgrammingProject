@@ -52,8 +52,9 @@ public class TurnManager: MonoBehaviour
     public void TurnStart()
     {
 
-            Day++;
-            Phase1();
+        Day++;
+        PResourceManager.instance.MP += 50;
+        Phase1();
         
     }
     public void TurnEnd()

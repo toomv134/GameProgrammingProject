@@ -17,7 +17,7 @@ public class PResourceManager : MonoBehaviour //자원 얼마나 있는지 관리
         {
             Debug.Log("Duplicated UnitManager, ignoring this one", gameObject);
         }
-        MP = 500;
+        MP = 200;
     }
     private void Start()
     {
@@ -33,6 +33,6 @@ public class PResourceManager : MonoBehaviour //자원 얼마나 있는지 관리
     }
     private void TurnChangeGainMP()
     {
-        MP += PBuildingManager.instance.R_building.Count * 150;
+        MP += PBuildingManager.instance.R_building.Count * 50;
     }
 }

@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4a9a1d77da98648aacdd3644bf90b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 400
+  amount: 500
   audioSource: {fileID: 1490451802045208456}
   death_clip: {fileID: 8300000, guid: c188383104c20874c95429f27a5e8ee5, type: 3}
 --- !u!114 &5417829055419689162
