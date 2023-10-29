@@ -60,13 +60,20 @@ public class EUnitManager : MonoBehaviour
     }
     private void Update()
     {
-        if (GameObject.Find("Enemy Fortress Unit").GetComponent<Life>().amount <= 0)
+        if (fortress)
         {
-            fortress = false;
+            if (GameObject.Find("Enemy Fortress Unit").GetComponent<Life>().amount <= 0)
+            {
+                EUnitManager.instance.units.Remove(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
+                fortress = false;
+            }
         }
-        if (GameObject.Find("Enemy Castle Unit").GetComponent<Life>().amount <= 0)
+        if (castle)
         {
-            castle = false;
+            if (GameObject.Find("Enemy Castle Unit").GetComponent<Life>().amount <= 0)
+            {
+                castle = false;
+            }
         }
         if (TurnChange != TurnManager.instance.Day)
         {
@@ -85,5 +92,13 @@ public class EUnitManager : MonoBehaviour
         Paladin += EBuildingManager.instance.P_building.Count * 3;
         Lancer += EBuildingManager.instance.L_building.Count * 3;
         Archer += EBuildingManager.instance.A_building.Count * 3;
+    }
+    public void destroyarmy()
+    {
+        for (int i = 0; i < P_units.Count; i++)
+        {
+            Debug.Log("destroy");
+            Destroy(P_units[i]);
+        }
     }
 }

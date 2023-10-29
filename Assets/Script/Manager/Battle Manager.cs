@@ -35,56 +35,14 @@ public class BattleManager : MonoBehaviour
             selectPlace();
             
         }
+     
+    }
+    private void LateUpdate()
+    {
         if (cameranum != -1)
         {
-            //EndFight();
-        }
-    }
-
-    private void EndFight()
-    {
-        switch (cameranum)
-        {
-            case 0:
-                if ((PUnitManager.instance.P_units.Count + PUnitManager.instance.L_units.Count + PUnitManager.instance.A_units.Count) ==0|| 
-                    (EUnitManager.instance.P_units.Count + EUnitManager.instance.L_units.Count + EUnitManager.instance.A_units.Count) == 0)
-                {
-                    ReturnArmy();
-                    cameranum = -1;
-                    
-                }
-                break;
-            case 1:
-                if (!EUnitManager.instance.fortress|| (PUnitManager.instance.P_units.Count + PUnitManager.instance.L_units.Count + PUnitManager.instance.A_units.Count) == 0)
-                {
-                    ReturnArmy();
-                    cameranum = -1;
-                }
-                break;
-            case 2:
-                if (!EUnitManager.instance.castle || (PUnitManager.instance.P_units.Count + PUnitManager.instance.L_units.Count + PUnitManager.instance.A_units.Count) == 0)
-                {
-                    ReturnArmy();
-                    cameranum = -1;
-                }
-                break;
-            case 3:
-                if (!PUnitManager.instance.fortress || (EUnitManager.instance.P_units.Count + EUnitManager.instance.L_units.Count + EUnitManager.instance.A_units.Count) == 0)
-                {
-                    ReturnArmy();
-                    cameranum = -1;
-                }
-                break;
-            case 4:
-                if (!PUnitManager.instance.castle || (EUnitManager.instance.P_units.Count + EUnitManager.instance.L_units.Count + EUnitManager.instance.A_units.Count) == 0)
-                {
-                    ReturnArmy();
-                    cameranum = -1;
-                }
-                break;
-            default:
-                break;
-
+            
+            EndFight();
         }
     }
 
@@ -107,6 +65,17 @@ public class BattleManager : MonoBehaviour
         PUnitManager.instance.Lancer = 0;
         PUnitManager.instance.Paladin = 0;
     }
+    private void makefieldArmyzero()
+    { 
+            for (int i = PUnitManager.instance.P_units.Count - 1; i >= 0; i--)
+            {
+                GameObject.Find("Player Paladin(Clone)").GetComponent<Life>().amount=0;
+            }
+        
+    }
+    
+    
+    
     private void selectPlace()
     {
         if (TurnManager.instance.Onattack && EnemyManager.instance.Attack) //attack both Æò¾ß
@@ -174,4 +143,65 @@ public class BattleManager : MonoBehaviour
         }
         makeArmyzero();
     }
+
+    private void EndFight()
+    {
+        int player_unit = PUnitManager.instance.P_units.Count+ PUnitManager.instance.L_units.Count+ PUnitManager.instance.A_units.Count;
+        int enemy_unit = EUnitManager.instance.P_units.Count + EUnitManager.instance.L_units.Count + EUnitManager.instance.A_units.Count;
+        
+        switch (cameranum)
+        {
+
+            case 0:
+                if (player_unit == 0 || enemy_unit == 0)
+                {
+                    ReturnArmy();
+                    makefieldArmyzero();
+                    cameranum = -1;
+                    TurnManager.instance.checkWinorLose();
+                }
+                break;
+            case 1:
+                if (!EUnitManager.instance.fortress || player_unit == 0)
+                {
+                    
+                    ReturnArmy();
+                    makefieldArmyzero();
+                    cameranum = -1;
+                    TurnManager.instance.checkWinorLose();
+                }
+                break;
+            case 2:
+                if (!EUnitManager.instance.castle || player_unit == 0)
+                {
+                    ReturnArmy();
+                    makefieldArmyzero();
+                    cameranum = -1;
+                    TurnManager.instance.checkWinorLose();
+                }
+                break;
+            case 3:
+                if (!PUnitManager.instance.fortress || enemy_unit == 0)
+                {
+                    ReturnArmy();
+                    makefieldArmyzero();
+                    cameranum = -1;
+                    TurnManager.instance.checkWinorLose();
+                }
+                break;
+            case 4:
+                if (!PUnitManager.instance.castle || enemy_unit == 0)
+                {
+                    ReturnArmy();
+                    makefieldArmyzero();
+                    cameranum = -1;
+                    TurnManager.instance.checkWinorLose();
+                }
+                break;
+            default:
+                break;
+
+        }
+    }
+
 }

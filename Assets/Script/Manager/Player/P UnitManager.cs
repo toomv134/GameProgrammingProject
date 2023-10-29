@@ -61,13 +61,21 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     }
     private void Update()
     {
-        if(GameObject.Find("Player Fortress Unit").GetComponent<Life>().amount <= 0)
+        if (fortress)
         {
-            fortress = false;
+            if (GameObject.Find("Player Fortress Unit").GetComponent<Life>().amount <= 0)
+            {
+                PUnitManager.instance.units.Remove(GameObject.Find("Player Fortress Unit").GetComponent<PUnit>());
+                fortress = false;
+                
+            }
         }
-        if (GameObject.Find("Player Castle Unit").GetComponent<Life>().amount <= 0)
+        if (castle)
         {
-            castle = false;
+            if (GameObject.Find("Player Castle Unit").GetComponent<Life>().amount <= 0 )
+            {
+                castle = false;
+            }
         }
         if (TurnChange != TurnManager.instance.Day)
         {
@@ -87,4 +95,5 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
         Lancer += PBuildingManager.instance.L_building.Count * 3;
         Archer += PBuildingManager.instance.A_building.Count * 3;
     }
+
 }
