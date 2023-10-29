@@ -128,5 +128,21 @@ public class TurnManager: MonoBehaviour
         
     }
     //BattleManager.instance.phase3 = true; //버튼 누르고 실행
+    public void checkWinorLose()
+    {
+        if (!EUnitManager.instance.castle)
+        {
+            //승리
+        }
+        else if (!PUnitManager.instance.castle)
+        {
+            //패배
+        }
+        else
+        {
+            Onattack = false;
+            TurnStart();
+        }
+    }
 
 }

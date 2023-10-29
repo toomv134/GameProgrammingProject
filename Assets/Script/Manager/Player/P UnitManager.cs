@@ -16,6 +16,7 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     public Vector3 enemy_pos;
     private float TurnChange;
     public bool fortress;
+    public bool castle;
     public void Awake()
     {
         if (instance == null)
@@ -30,6 +31,7 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     private void Start()
     {
         fortress = true;
+        castle = true;
         Paladin = 0;
         Lancer = 0;
         Archer = 0;
@@ -59,6 +61,14 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     }
     private void Update()
     {
+        if(GameObject.Find("Player Fortress Unit").GetComponent<Life>().amount <= 0)
+        {
+            fortress = false;
+        }
+        if (GameObject.Find("Player Castle Unit").GetComponent<Life>().amount <= 0)
+        {
+            castle = false;
+        }
         if (TurnChange != TurnManager.instance.Day)
         {
             TurnChangeGainArmy();

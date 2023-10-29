@@ -111,9 +111,20 @@ public class CameraSwitch : MonoBehaviour
             }
             
         }
+        if (!TurnManager.instance.Onattack && cnt == 1)
+        {
+            BlooshedCamera.enabled = false;
+            EnemyAttack1Camera.enabled = false;
+            EnemyAttack2Camera.enabled = false;
+            PlayerAttack1Camera.enabled = false;
+            PlayerAttack2Camera.enabled = false;
+            mainCamera.enabled = true;
+            cnt = 0;
+            StartCoroutine(TransitionCameras(toMain, toMainRotate));
+        }
         if (TurnManager.instance.Onattack&&cnt==0)
         {
-            cnt++;
+            cnt = 1;
             Debug.Log("change");
             mainCamera.enabled = false;
             firstCamera.enabled = false;
@@ -123,7 +134,7 @@ public class CameraSwitch : MonoBehaviour
             EnemyAttack2Camera.enabled = false;
             PlayerAttack1Camera.enabled = false;
             PlayerAttack2Camera.enabled = false;
-            Debug.Log(BattleManager.instance.cameranum);
+            
             switch (BattleManager.instance.cameranum)
             {
                 case 0:
