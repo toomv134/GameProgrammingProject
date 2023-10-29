@@ -8,9 +8,11 @@ public class CameraSwitch : MonoBehaviour
     public Camera firstCamera;
     public Camera secondCamera;
     public Camera movingCamera;
+    public Camera BlooshedCamera;
+    private float cnt = 0;
     private bool isTransitioning = false;
     private float transitionStartTime;
-    float dragSpeed = 100.0f;
+    float dragSpeed = 300.0f;
     void Start()
     {
         // 초기 화면 설정
@@ -18,6 +20,7 @@ public class CameraSwitch : MonoBehaviour
         firstCamera.enabled = false;
         secondCamera.enabled = false;
         movingCamera.enabled = false;
+        BlooshedCamera.enabled = false;
         movingCamera.transform.position=mainCamera.transform.position;
         movingCamera.transform.rotation = mainCamera.transform.rotation;
     }
@@ -27,10 +30,12 @@ public class CameraSwitch : MonoBehaviour
         Vector3 toMain = mainCamera.transform.position;
         Vector3 toFirst = firstCamera.transform.position;
         Vector3 toSecond = secondCamera.transform.position;
+        Vector3 toBlooshed = BlooshedCamera.transform.position;
 
         Quaternion toMainRotate = mainCamera.transform.rotation;
         Quaternion toFirstRotate = firstCamera.transform.rotation;
         Quaternion toSecondRotate = secondCamera.transform.rotation;
+        Quaternion toBlooshedRotate = BlooshedCamera.transform.rotation;
         if (mainCamera.enabled)
         {
             movingCamera.transform.position = mainCamera.transform.position;
@@ -42,6 +47,10 @@ public class CameraSwitch : MonoBehaviour
         else if (firstCamera.enabled)
         {
             movingCamera.transform.position = firstCamera.transform.position;
+        }
+        else if (BlooshedCamera.enabled)
+        {
+            movingCamera.transform.position = BlooshedCamera.transform.position;
         }
         if (Input.GetKeyDown(KeyCode.Q) && !isTransitioning)
         {
@@ -80,6 +89,16 @@ public class CameraSwitch : MonoBehaviour
                 StartCoroutine(TransitionCameras(toSecond, toSecondRotate));
             }
             
+        }
+        if (TurnManager.instance.Onattack&&cnt==0)
+        {
+            cnt++;
+            Debug.Log("change");
+            mainCamera.enabled = false;
+            firstCamera.enabled = false;
+            secondCamera.enabled = false;
+            BlooshedCamera.enabled = true;
+            StartCoroutine(TransitionCameras(toBlooshed, toBlooshedRotate));
         }
     }
 

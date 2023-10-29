@@ -19,6 +19,8 @@ public class TurnManager: MonoBehaviour
     [SerializeField] private GameObject thirdXbutton;
     [SerializeField] private GameObject thirdAttackbutton;
 
+    public bool Onattack=false;
+
     private float Paladin;
     private float Lancer;
     private float Archer;
@@ -96,4 +98,11 @@ public class TurnManager: MonoBehaviour
         thirdphase.SetActive(true);
         
     }
+    public void Attack()
+    {
+        thirdphase.SetActive(false);
+        Time.timeScale = 1;
+        Onattack = true;
+    }
+
 }
