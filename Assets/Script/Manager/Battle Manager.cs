@@ -51,7 +51,7 @@ public class BattleManager : MonoBehaviour
     {
         int player_unit = PUnitManager.instance.P_units.Count + PUnitManager.instance.L_units.Count + PUnitManager.instance.A_units.Count;
         int enemy_unit = EUnitManager.instance.P_units.Count + EUnitManager.instance.L_units.Count + EUnitManager.instance.A_units.Count;
-
+        
         switch (cameranum)
         {
 
@@ -60,6 +60,7 @@ public class BattleManager : MonoBehaviour
                 {
                     ReturnArmy();
                     makefieldArmyzero();
+                    cnt = 0;
                     cameranum = -1;
                     PUnitManager.instance.units.Add(GameObject.Find("Player Castle Unit").GetComponent<PUnit>());
                     EUnitManager.instance.units.Add(GameObject.Find("Enemy Castle Unit").GetComponent<EUnit>());
@@ -81,6 +82,7 @@ public class BattleManager : MonoBehaviour
                     
                     ReturnArmy();
                     makefieldArmyzero();
+                    cnt = 0;
                     cameranum = -1;
                     
                     TurnManager.instance.checkWinorLose();
@@ -91,6 +93,7 @@ public class BattleManager : MonoBehaviour
                 {
                     ReturnArmy();
                     makefieldArmyzero();
+                    cnt = 0;
                     cameranum = -1;
                     
                     TurnManager.instance.checkWinorLose();
@@ -101,6 +104,7 @@ public class BattleManager : MonoBehaviour
                 {
                     ReturnArmy();
                     makefieldArmyzero();
+                    cnt = 0;
                     cameranum = -1;
                     
                     TurnManager.instance.checkWinorLose();
@@ -111,6 +115,7 @@ public class BattleManager : MonoBehaviour
                 {
                     ReturnArmy();
                     makefieldArmyzero();
+                    cnt = 0;
                     cameranum = -1;
                     
                     TurnManager.instance.checkWinorLose();
@@ -144,9 +149,42 @@ public class BattleManager : MonoBehaviour
     { 
             for (int i = PUnitManager.instance.P_units.Count - 1; i >= 0; i--)
             {
-                GameObject.Find("Player Paladin(Clone)").GetComponent<Life>().amount=0;
-            }
-        
+            Debug.Log("角青");
+            Destroy(PUnitManager.instance.P_units[i].gameObject);
+            //Destroy(PUnitManager.instance.P_units[i]);
+        }
+        for (int i = PUnitManager.instance.A_units.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("角青");
+            Destroy(PUnitManager.instance.A_units[i].gameObject);
+            //Destroy(PUnitManager.instance.P_units[i]);
+        }
+        for (int i = PUnitManager.instance.L_units.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("角青");
+            Destroy(PUnitManager.instance.L_units[i].gameObject);
+            //Destroy(PUnitManager.instance.P_units[i]);
+        }
+
+
+        for (int i = EUnitManager.instance.P_units.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("角青");
+            Destroy(EUnitManager.instance.P_units[i].gameObject);
+            //Destroy(PUnitManager.instance.P_units[i]);
+        }
+        for (int i = EUnitManager.instance.A_units.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("角青");
+            Destroy(EUnitManager.instance.A_units[i].gameObject);
+            //Destroy(PUnitManager.instance.P_units[i]);
+        }
+        for (int i = EUnitManager.instance.L_units.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("角青");
+            Destroy(EUnitManager.instance.L_units[i].gameObject);
+            //Destroy(PUnitManager.instance.P_units[i]);
+        }
     }
     
     
