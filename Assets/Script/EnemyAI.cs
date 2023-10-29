@@ -44,6 +44,7 @@ public class EnemyAI : MonoBehaviour
             //Day 3 창   공격x
             case 3:
                 Instantiate(LancerBuilding, position3, Quaternion.identity);
+                EnemyManager.instance.Attack = false;
                 break;
             //Day 4 자원
             case 4:
@@ -56,6 +57,7 @@ public class EnemyAI : MonoBehaviour
             //Day 6 창   공격o
             case 6:
                 Instantiate(LancerBuilding, position6, Quaternion.identity);
+                EnemyManager.instance.Attack = true;
                 break;
             //Day 7 궁
             case 7:
@@ -68,6 +70,7 @@ public class EnemyAI : MonoBehaviour
             //Day 9 창   공격o
             case 9:
                 Instantiate(LancerBuilding, position9, Quaternion.identity);
+                EnemyManager.instance.Attack = true;
                 break;
             //Day 10궁
             case 10:
@@ -80,6 +83,7 @@ public class EnemyAI : MonoBehaviour
             //Day 12궁   공격o
             case 12:
                 Instantiate(ArcherBuilding, position12, Quaternion.identity);
+                EnemyManager.instance.Attack = true;
                 break;
             case 13:
                 break;

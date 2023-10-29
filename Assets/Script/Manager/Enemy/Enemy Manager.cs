@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject ResourceManger;
     public GameObject BuildingManger;
     public GameObject UnitManger;
+    public bool Attack;
     private void Awake()
     {
         if (instance == null)
