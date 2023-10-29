@@ -92,13 +92,13 @@ public class PUnit: MonoBehaviour
             //Debug.Log("hit");
             if(this.GetComponent<overlapspere>().target.tag != "Building")
             {
-            
+
                 hurtaudioSource.clip = hurt_clip;
                 hurtaudioSource.Play();
                 
                 this.GetComponent<overlapspere>().target.GetComponent<Animator>().SetTrigger("IsHit");
             }
-            
+
             this.GetComponent<overlapspere>().target.GetComponent<Life>().amount -= damage;
             StartCoroutine(Attack());
             at = false;
