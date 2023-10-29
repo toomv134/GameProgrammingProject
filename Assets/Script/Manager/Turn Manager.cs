@@ -105,6 +105,11 @@ public class TurnManager: MonoBehaviour
             Debug.Log("cannot attack");
             noattack();
         }
+        else if (PUnitManager.instance.Archer + PUnitManager.instance.Lancer + PUnitManager.instance.Paladin <= 0)
+        {
+            Debug.Log("not enough army");
+            Phase3();
+        }
         else
         {
             Debug.Log("attack");
@@ -120,7 +125,7 @@ public class TurnManager: MonoBehaviour
     {
         Debug.Log("no attack");
         Phase3();
-        attackday -= 1;
+        
     }
     //BattleManager.instance.phase3 = true; //버튼 누르고 실행
 

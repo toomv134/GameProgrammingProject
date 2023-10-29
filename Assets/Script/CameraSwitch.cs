@@ -9,6 +9,14 @@ public class CameraSwitch : MonoBehaviour
     public Camera secondCamera;
     public Camera movingCamera;
     public Camera BlooshedCamera;
+    public Camera EnemyAttack1Camera;
+    public Camera EnemyAttack2Camera;
+    public Camera PlayerAttack1Camera;
+    public Camera PlayerAttack2Camera;
+
+
+
+
     private float cnt = 0;
     private bool isTransitioning = false;
     private float transitionStartTime;
@@ -22,7 +30,11 @@ public class CameraSwitch : MonoBehaviour
         secondCamera.enabled = false;
         movingCamera.enabled = false;
         BlooshedCamera.enabled = false;
-        movingCamera.transform.position=mainCamera.transform.position;
+        EnemyAttack1Camera.enabled = false ;
+        EnemyAttack2Camera.enabled=false;
+        PlayerAttack1Camera.enabled=false;
+        PlayerAttack2Camera.enabled = false;
+    movingCamera.transform.position=mainCamera.transform.position;
         movingCamera.transform.rotation = mainCamera.transform.rotation;
     }
 
@@ -32,11 +44,19 @@ public class CameraSwitch : MonoBehaviour
         Vector3 toFirst = firstCamera.transform.position;
         Vector3 toSecond = secondCamera.transform.position;
         Vector3 toBlooshed = BlooshedCamera.transform.position;
+        Vector3 toEnemyAttack1 = EnemyAttack1Camera.transform.position;
+        Vector3 toEnemyAttack2=EnemyAttack2Camera.transform.position;
+        Vector3 toPlayerAttack1=PlayerAttack1Camera.transform.position;
+        Vector3 toPlayerAttack2=PlayerAttack2Camera.transform.position;
 
         Quaternion toMainRotate = mainCamera.transform.rotation;
         Quaternion toFirstRotate = firstCamera.transform.rotation;
         Quaternion toSecondRotate = secondCamera.transform.rotation;
         Quaternion toBlooshedRotate = BlooshedCamera.transform.rotation;
+        Quaternion toEnemyAttack1Rotate = EnemyAttack1Camera.transform.rotation;
+        Quaternion toEnemyAttack2Rotate = EnemyAttack2Camera.transform.rotation;
+        Quaternion toPlayerAttack1Rotate = PlayerAttack1Camera.transform.rotation;
+        Quaternion toPlayerAttack2Rotate = PlayerAttack2Camera.transform.rotation;
         if (mainCamera.enabled)
         {
             movingCamera.transform.position = mainCamera.transform.position;
@@ -98,8 +118,42 @@ public class CameraSwitch : MonoBehaviour
             mainCamera.enabled = false;
             firstCamera.enabled = false;
             secondCamera.enabled = false;
-            BlooshedCamera.enabled = true;
-            StartCoroutine(TransitionCameras(toBlooshed, toBlooshedRotate));
+            BlooshedCamera.enabled = false;
+            EnemyAttack1Camera.enabled = false;
+            EnemyAttack2Camera.enabled = false;
+            PlayerAttack1Camera.enabled = false;
+            PlayerAttack2Camera.enabled = false;
+
+            switch (BattleManager.instance.cameranum)
+            {
+                case 0:
+                    BlooshedCamera.enabled = true;
+                    StartCoroutine(TransitionCameras(toBlooshed, toBlooshedRotate));
+                    break;
+                case 1:
+
+                    PlayerAttack2Camera.enabled = true;
+                    StartCoroutine(TransitionCameras(toPlayerAttack2, toPlayerAttack2Rotate));
+                    break;
+                case 2:
+                    PlayerAttack1Camera.enabled = true;
+                    StartCoroutine(TransitionCameras(toPlayerAttack1, toPlayerAttack1Rotate));
+                    break;
+                case 3:
+                    EnemyAttack2Camera.enabled = true;
+                    StartCoroutine(TransitionCameras(toEnemyAttack2, toEnemyAttack2Rotate));
+                 
+                    break;
+                case 4:
+                    EnemyAttack1Camera.enabled = true;
+                    StartCoroutine(TransitionCameras(toEnemyAttack1, toEnemyAttack1Rotate));
+
+
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    
     public static BattleManager instance;
-    public bool phase3;
+    public float cameranum = -1;
+    private float cnt = 0;
     private void Awake()
     {
         if (instance == null)
@@ -20,16 +22,18 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        phase3 = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (phase3)
+        if (TurnManager.instance.Onattack&&cnt==0)
         {
+            cnt = 1;
+            Debug.Log("BMstart");
             selectPlace();
-            phase3 = false;
+            
         }
     }
 
@@ -37,6 +41,7 @@ public class BattleManager : MonoBehaviour
     {
         if (TurnManager.instance.Onattack && EnemyManager.instance.Attack) //attack both 평야
         {
+            cameranum = 0;
             //카메라 옮기기
             //평야에 있는 스포너에 유닛 할당
             GameObject.Find("BattelFieldSpawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
@@ -50,6 +55,7 @@ public class BattleManager : MonoBehaviour
         {
             if (EUnitManager.instance.fortress)
             { //2차성루 안부서졌음
+                cameranum = 1;
                 GameObject.Find("1st Enemy Site Spawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
                 GameObject.Find("1st Enemy Site Spawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;
                 GameObject.Find("1st Enemy Site Spawner").GetComponent<EPaladinSpawn>().num = EUnitManager.instance.Paladin;
@@ -59,6 +65,7 @@ public class BattleManager : MonoBehaviour
             }
             else
             { //2차성루 부서짐
+                cameranum = 2;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<EPaladinSpawn>().num = EUnitManager.instance.Paladin;
@@ -71,6 +78,7 @@ public class BattleManager : MonoBehaviour
         {
             if (PUnitManager.instance.fortress)
             { //2차성루 안부서졌음
+                cameranum = 3;
                 GameObject.Find("1st Player Site Spawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
                 GameObject.Find("1st Player Site Spawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;
                 GameObject.Find("1st Player Site Spawner").GetComponent<EPaladinSpawn>().num = EUnitManager.instance.Paladin;
@@ -80,6 +88,7 @@ public class BattleManager : MonoBehaviour
             }
             else
             { //2차성루 부서짐
+                cameranum = 4;
                 GameObject.Find("2nd Player Site Spawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
                 GameObject.Find("2nd Player Site Spawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;
                 GameObject.Find("2nd Player Site Spawner").GetComponent<EPaladinSpawn>().num = EUnitManager.instance.Paladin;
