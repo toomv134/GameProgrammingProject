@@ -6,14 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class PersonController : MonoBehaviour
 {
+    public static PersonController instance;
     [Space(50)] public Animator main_animator;
     [Space(10)] [SerializeField] string sceneToLoad;
     public CanvasGroup homePanel;
 
     [SerializeField] private GameObject[] person;
-    private int cur = 0;
+    public int cur = 0;
     private bool change = false;
-
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.Log("Duplicated PersonController, ignoring this one", gameObject);
+        }
+    }
     void Update()
     {
         if (change)
@@ -35,7 +46,6 @@ public class PersonController : MonoBehaviour
 
     public void RightClick()
     {
-        Debug.Log(cur);
         if (cur + 1 < person.Length)
         {
             cur++;
@@ -48,7 +58,6 @@ public class PersonController : MonoBehaviour
 
             main_animator.enabled = true;
             main_animator.SetTrigger("LoadScene");
-
             StartCoroutine(WaitToLoadLevel());
         }
 
@@ -58,6 +67,7 @@ public class PersonController : MonoBehaviour
 
             // Scene Load
             SceneManager.LoadScene(sceneToLoad);
+            //DontDestroyOnLoad(personobj);
         }
 
     private void ActivePerson()
@@ -67,4 +77,6 @@ public class PersonController : MonoBehaviour
             person[i].SetActive(i == cur);
         }
     }
+
+
 }
