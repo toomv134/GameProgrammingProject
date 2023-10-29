@@ -51,7 +51,16 @@ public class BattleManager : MonoBehaviour
                 {
                     ReturnArmy();
                     cameranum = -1;
-                    
+                    PUnitManager.instance.units.Add(GameObject.Find("Player Castle Unit").GetComponent<PUnit>());
+                    EUnitManager.instance.units.Add(GameObject.Find("Enemy Castle Unit").GetComponent<EUnit>());
+                    if (PUnitManager.instance.fortress)
+                    {
+                        PUnitManager.instance.units.Add(GameObject.Find("Player Fortress Unit").GetComponent<PUnit>());
+                    }
+                    if (EUnitManager.instance.fortress)
+                    {
+                        EUnitManager.instance.units.Add(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
+                    }
                 }
                 break;
             case 1:
@@ -114,12 +123,16 @@ public class BattleManager : MonoBehaviour
             cameranum = 0;
             //카메라 옮기기
             //평야에 있는 스포너에 유닛 할당
-            GameObject.Find("BattelFieldSpawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
-            GameObject.Find("BattelFieldSpawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;
-            GameObject.Find("BattelFieldSpawner").GetComponent<EPaladinSpawn>().num = EUnitManager.instance.Paladin;
-            GameObject.Find("BattelFieldSpawner").GetComponent<PArcherSpawn>().num = PUnitManager.instance.Archer;
-            GameObject.Find("BattelFieldSpawner").GetComponent<PLancerSpawn>().num = PUnitManager.instance.Lancer;
-            GameObject.Find("BattelFieldSpawner").GetComponent<PPaladinSpawn>().num = PUnitManager.instance.Paladin;
+            PUnitManager.instance.units.Remove(GameObject.Find("Player Castle Unit").GetComponent<PUnit>());
+            PUnitManager.instance.units.Remove(GameObject.Find("Player Fortress Unit").GetComponent<PUnit>());
+            EUnitManager.instance.units.Remove(GameObject.Find("Enemy Castle Unit").GetComponent<EUnit>());
+            EUnitManager.instance.units.Remove(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
+            GameObject.Find("BattleFieldSpawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
+            GameObject.Find("BattleFieldSpawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;
+            GameObject.Find("BattleFieldSpawner").GetComponent<EPaladinSpawn>().num = EUnitManager.instance.Paladin;
+            GameObject.Find("BattleFieldSpawner").GetComponent<PArcherSpawn>().num = PUnitManager.instance.Archer;
+            GameObject.Find("BattleFieldSpawner").GetComponent<PLancerSpawn>().num = PUnitManager.instance.Lancer;
+            GameObject.Find("BattleFieldSpawner").GetComponent<PPaladinSpawn>().num = PUnitManager.instance.Paladin;
         }
         else if (TurnManager.instance.Onattack) // player attack, enemy don't 
         {
@@ -135,7 +148,7 @@ public class BattleManager : MonoBehaviour
             }
             else
             { //2차성루 부서짐
-                Debug.Log("2nd destroyed , lancer unit : " + PUnitManager.instance.Lancer);
+                //Debug.Log("2nd destroyed , lancer unit : " + PUnitManager.instance.Lancer);
                 cameranum = 2;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;

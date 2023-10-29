@@ -88,18 +88,17 @@ public class EUnit: MonoBehaviour
         bool at = true;
         attackaudioSource.clip = attack_clip;
         attackaudioSource.Play();
-        
+
         yield return new WaitForSecondsRealtime(1.0f);
         
         if (at)
         {
-
             //Debug.Log("hit");
             if (this.GetComponent<overlapspere>().target.tag != "Building")
             {
                 hurtaudioSource.clip = hurt_clip;
                 hurtaudioSource.Play();
-                
+
                 this.GetComponent<overlapspere>().target.GetComponent<Animator>().SetTrigger("IsHit");
             }
 
@@ -107,5 +106,6 @@ public class EUnit: MonoBehaviour
             StartCoroutine(Attack());
             at = false;
         }
+
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private float Day = TurnManager.instance.Day;
+    public float Day;
     public GameObject ResourceBuilding;
     public GameObject SwordBuilding;
     public GameObject LancerBuilding;
@@ -23,13 +23,24 @@ public class EnemyAI : MonoBehaviour
     Vector3 position11 = new Vector3(375, 4, -51);
     Vector3 position12 = new Vector3(376, 4, -67);
 
+    private void Start()
+    {
+        Day = 0;
+    }
     private void FixedUpdate()
     {
-
+        if (TurnManager.instance.Day > Day)
+        {
+            Debug.Log("AI act");
+            StartCoroutine(AIact());
+            Day = TurnManager.instance.Day;
+        }
+        
     }
 
-    void AIact()
+    IEnumerator AIact()
     {
+        yield return null;
         //처음 시작 200원 시작
         switch (Day)
         {
