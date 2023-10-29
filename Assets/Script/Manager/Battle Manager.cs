@@ -65,6 +65,7 @@ public class BattleManager : MonoBehaviour
             }
             else
             { //2차성루 부서짐
+                Debug.Log("2nd destroyed , lancer unit : " + PUnitManager.instance.Lancer);
                 cameranum = 2;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<EArcherSpawn>().num = EUnitManager.instance.Archer;
                 GameObject.Find("2nd Enemy Site Spawner").GetComponent<ELancerSpawn>().num = EUnitManager.instance.Lancer;

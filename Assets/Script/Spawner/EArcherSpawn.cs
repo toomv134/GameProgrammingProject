@@ -8,18 +8,24 @@ public class EArcherSpawn : MonoBehaviour
 
     BoxCollider rangeCollider;
     public GameObject unit;
-    public float num;
+    public int num;
     private void Start()
     {
-        StartCoroutine(RandomRespawn_Coroutine());
+      //  StartCoroutine(RandomRespawn_Coroutine());
+    }
+    private void Update()
+    {
+        if (num > 0) // 스폰 한번만
+        {
+            RandomSpawn(num);
+            num = 0;
+        }
     }
 
-    IEnumerator RandomRespawn_Coroutine()
+    private void RandomSpawn(int n)
     {
-        for(float i=0;i<num;i++)
+        for (int i = 0; i < num; i++)
         {
-            yield return new WaitForSeconds(0);
-
             GameObject instantUnit = Instantiate(unit, Return_RandomPosition(), Quaternion.identity);
         }
     }
