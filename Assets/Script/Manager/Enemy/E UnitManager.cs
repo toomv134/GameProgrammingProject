@@ -13,7 +13,8 @@ public class EUnitManager : MonoBehaviour
     public float Archer;
     public Vector3 pos;
     public Vector3 enemy_pos;
-
+    private float TurnChange;
+    public bool fortress;
     public void Awake()
     {
         if (instance == null)
@@ -49,9 +50,22 @@ public class EUnitManager : MonoBehaviour
     }
     private void Update()
     {
+        if (TurnChange != TurnManager.instance.Day)
+        {
+            TurnChangeGainArmy();
+            TurnChange = TurnManager.instance.Day;
+        }
+
         float count = units.Count;
         //Debug.Log("P2 " + count);
         pos = new Vector3(pos_x / count, pos_y / count, pos_z / count);
         enemy_pos = PUnitManager.instance.pos;
+    }
+
+    private void TurnChangeGainArmy()
+    {
+        Paladin += EBuildingManager.instance.P_building.Count * 3;
+        Lancer += EBuildingManager.instance.L_building.Count * 3;
+        Archer += EBuildingManager.instance.A_building.Count * 3;
     }
 }

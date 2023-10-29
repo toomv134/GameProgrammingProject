@@ -15,6 +15,7 @@ public class PUnitManager : MonoBehaviour // 유닛 얼마나 있는지 관리
     public Vector3 pos;
     public Vector3 enemy_pos;
     private float TurnChange;
+    public bool fortress;
     public void Awake()
     {
         if (instance == null)
