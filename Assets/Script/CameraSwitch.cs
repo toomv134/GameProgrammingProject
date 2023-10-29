@@ -123,7 +123,7 @@ public class CameraSwitch : MonoBehaviour
             EnemyAttack2Camera.enabled = false;
             PlayerAttack1Camera.enabled = false;
             PlayerAttack2Camera.enabled = false;
-
+            Debug.Log(BattleManager.instance.cameranum);
             switch (BattleManager.instance.cameranum)
             {
                 case 0:
@@ -131,23 +131,21 @@ public class CameraSwitch : MonoBehaviour
                     StartCoroutine(TransitionCameras(toBlooshed, toBlooshedRotate));
                     break;
                 case 1:
-
-                    PlayerAttack2Camera.enabled = true;
-                    StartCoroutine(TransitionCameras(toPlayerAttack2, toPlayerAttack2Rotate));
-                    break;
-                case 2:
                     PlayerAttack1Camera.enabled = true;
                     StartCoroutine(TransitionCameras(toPlayerAttack1, toPlayerAttack1Rotate));
                     break;
-                case 3:
-                    EnemyAttack2Camera.enabled = true;
-                    StartCoroutine(TransitionCameras(toEnemyAttack2, toEnemyAttack2Rotate));
-                 
+                case 2:
+                    PlayerAttack2Camera.enabled = true;
+                    StartCoroutine(TransitionCameras(toPlayerAttack2, toPlayerAttack2Rotate));
                     break;
-                case 4:
+                case 3:
                     EnemyAttack1Camera.enabled = true;
                     StartCoroutine(TransitionCameras(toEnemyAttack1, toEnemyAttack1Rotate));
 
+                    break;
+                case 4:
+                    EnemyAttack2Camera.enabled = true;
+                    StartCoroutine(TransitionCameras(toEnemyAttack2, toEnemyAttack2Rotate));
 
                     break;
                 default:
