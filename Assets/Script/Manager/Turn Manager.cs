@@ -53,6 +53,11 @@ public class TurnManager: MonoBehaviour
     {
 
         Day++;
+        if (Day == 20)
+        {
+            SceneManager.LoadScene("Lose");
+            Debug.Log("ÆÐ¹è");
+        }
         PResourceManager.instance.MP += 50;
         Phase1();
         
