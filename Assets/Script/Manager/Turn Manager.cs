@@ -133,9 +133,11 @@ public class TurnManager: MonoBehaviour
         if (!EUnitManager.instance.castle)
         {
             //½Â¸®
+            Debug.Log("½Â¸®");
         }
         else if (!PUnitManager.instance.castle)
         {
+            Debug.Log("ÆÐ¹è");
             //ÆÐ¹è
         }
         else
