@@ -75,7 +75,7 @@ public class CraftManual : MonoBehaviour
     {
       
         //GetMouseCursorpos();
-        if (movingCamera.enabled)
+        if (movingCamera.enabled||TurnManager.instance.StartWar)
         {
             Cancel();
         }
