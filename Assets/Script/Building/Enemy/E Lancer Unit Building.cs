@@ -7,7 +7,14 @@ public class ELancerUnitBuilding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EBuildingManager.instance.L_building.Add(this);
+        if (this.transform.position.x < 340) //2nd fortress
+        {
+            EBuildingManager.instance.Fortress_L_building.Add(this);
+        }
+        else
+        {
+            EBuildingManager.instance.L_building.Add(this);
+        }
     }
 
     // Update is called once per frame

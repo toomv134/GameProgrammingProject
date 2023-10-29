@@ -7,7 +7,14 @@ public class EPaladinUnitBuilding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EBuildingManager.instance.P_building.Add(this);
+        if (this.transform.position.x < 340) //2nd fortress
+        {
+            EBuildingManager.instance.Fortress_P_building.Add(this);
+        }
+        else
+        {
+            EBuildingManager.instance.P_building.Add(this);
+        }
     }
 
     // Update is called once per frame
