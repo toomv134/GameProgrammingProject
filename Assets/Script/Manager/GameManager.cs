@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public float Day;
     public float Phase;
+    private int person;
 
     private void Awake()
     {
@@ -27,17 +28,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
 
     // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
-        //if (Player.GetComponent<Life>().amount <= 0) //Player lose
-        //{
+        person = PersonController.instance.cur; //0 leo 1 lee 3 na
 
-        //}
-        //else if (Enemy.GetComponent<Life>().amount <= 0) //Enemy lose
-        //{
-
-        //}
     }
 
 
