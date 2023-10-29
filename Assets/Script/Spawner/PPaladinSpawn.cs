@@ -8,7 +8,7 @@ public class PPaladinSpawn : MonoBehaviour
 
     BoxCollider rangeCollider;
     public GameObject unit;
-    public int num;
+    public float num;
     private void Start()
     {
         StartCoroutine(RandomRespawn_Coroutine());
@@ -16,7 +16,7 @@ public class PPaladinSpawn : MonoBehaviour
 
     IEnumerator RandomRespawn_Coroutine()
     {
-        for (int i = 0; i < num; i++)
+        for (float i = 0; i < num; i++)
         {
             yield return new WaitForSeconds(0);
 

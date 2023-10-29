@@ -97,7 +97,6 @@ public class TurnManager: MonoBehaviour
         Time.timeScale = 0;
         secondphase.SetActive(false);
         thirdphase.SetActive(true);
-        
     }
     public void Attack()
     {
@@ -114,14 +113,15 @@ public class TurnManager: MonoBehaviour
             Onattack = true;
             attackday = 3;
         }
-
+        //BattleManager.instance.phase3 = true; //버튼 누르고 실행
     }
 
     public void noattack()
     {
         Debug.Log("no attack");
         Phase3();
+        attackday -= 1;
     }
-
+    //BattleManager.instance.phase3 = true; //버튼 누르고 실행
 
 }
