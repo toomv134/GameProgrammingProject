@@ -115,7 +115,7 @@ public class EnemyAI : MonoBehaviour
                 TurnManager.instance.EnemyAttack = true;
                 break;
             case 20:
-                TurnManager.instance.EnemyAttack = true;
+                //TurnManager.instance.EnemyAttack = true;
                 break;
             //마지막 전투 후 끝
 

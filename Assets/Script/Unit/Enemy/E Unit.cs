@@ -73,6 +73,10 @@ public class EUnit: MonoBehaviour
                     atk = false;
                 }
             }
+            else
+            {
+                atk = true;
+            }
         }
     }
     private void Update()

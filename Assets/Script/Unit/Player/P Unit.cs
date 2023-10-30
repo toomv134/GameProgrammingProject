@@ -72,6 +72,10 @@ public class PUnit: MonoBehaviour
                     atk = false;
                 }
             }
+            else
+            {
+                atk = true;
+            }
         }
     }
     private void Update()
