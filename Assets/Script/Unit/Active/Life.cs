@@ -9,8 +9,6 @@ public class Life : MonoBehaviour
     public float amount;
     //public UnityEvent onDeath;
 
-    public AudioSource audioSource;
-    public AudioClip death_clip;
     private void Update()
     {
         //Debug.Log(amount);
@@ -46,11 +44,7 @@ public class Life : MonoBehaviour
 
     IEnumerator Death()
     {
-        audioSource.Stop();
-        audioSource.clip = death_clip;
-        audioSource.loop = false;
-        audioSource.time = 0;
-        audioSource.Play();
+
         //Debug.Log("death");
         yield return new WaitForSecondsRealtime(3.0f);
         Destroy(gameObject);

@@ -25,8 +25,9 @@ public class Onhover : MonoBehaviour
 
     public void OnMouseOver()
     {
-        buttonImage.sprite = hoverSprite; // 마우스가 버튼 위에 있을 때 이미지를 바꿉니다.
         audioSource.PlayOneShot(sound_hover);
+        buttonImage.sprite = hoverSprite; // 마우스가 버튼 위에 있을 때 이미지를 바꿉니다.
+        
     }
 
     public void OnMouseExit()

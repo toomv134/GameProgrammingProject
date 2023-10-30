@@ -13,6 +13,8 @@ public class Craft
 }
 public class CraftManual : MonoBehaviour
 {
+    [Space(10)] [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip build_success;
     public Camera mainCamera;
     public Camera firstCamera;
     public Camera secondCamera;
@@ -132,6 +134,8 @@ public class CraftManual : MonoBehaviour
                 PResourceManager.instance.MP = PResourceManager.instance.MP - craft_building[selectedSlotNumber].craftNeedMP[0];
                 Instantiate(go_Prefab, hitInfo.point, Quaternion.identity);
                 Destroy(go_Preview);
+                audioSource.PlayOneShot(build_success);
+                
                 isActivated = false;
                 isPreviewActivated = false;
                 go_Preview = null;
@@ -140,6 +144,7 @@ public class CraftManual : MonoBehaviour
             else
             {
                 Debug.Log("돈이없습니다.");
+                TurnManager.instance.DoNotHaveMoney();
                 Destroy(go_Preview);
                 isActivated = false;
                 isPreviewActivated = false;

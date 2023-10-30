@@ -7,6 +7,9 @@ public class BattleManager : MonoBehaviour
     
     public static BattleManager instance;
     public float cameranum = -1;
+    [Space(10)] [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip war_begin;
+    [SerializeField] AudioClip war_end;
     private float cnt = 0;
     private void Awake()
     {
@@ -33,7 +36,9 @@ public class BattleManager : MonoBehaviour
             cnt = 1;
             Debug.Log("BMstart");
             selectPlace();
-            
+            audioSource.Stop();
+            audioSource.clip=war_begin;
+            audioSource.Play();
         }
        
      
@@ -51,7 +56,7 @@ public class BattleManager : MonoBehaviour
     {
         int player_unit = PUnitManager.instance.P_units.Count + PUnitManager.instance.L_units.Count + PUnitManager.instance.A_units.Count;
         int enemy_unit = EUnitManager.instance.P_units.Count + EUnitManager.instance.L_units.Count + EUnitManager.instance.A_units.Count;
-        Debug.Log("player" + player_unit + "enemy" + enemy_unit);
+        
         switch (cameranum)
         {
 
@@ -73,7 +78,10 @@ public class BattleManager : MonoBehaviour
                     {
                         EUnitManager.instance.units.Add(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
                     }
-                    
+                    audioSource.Stop();
+                    audioSource.clip = war_end;
+                    audioSource.loop = true;
+                    audioSource.Play();
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -95,8 +103,11 @@ public class BattleManager : MonoBehaviour
                     {
                         PUnitManager.instance.units.Add(GameObject.Find("Player Fortress Unit").GetComponent<PUnit>());
                     }
-                
 
+                    audioSource.Stop();
+                    audioSource.clip = war_end;
+                    audioSource.loop = true;
+                    audioSource.Play();
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -115,7 +126,10 @@ public class BattleManager : MonoBehaviour
                         PUnitManager.instance.units.Add(GameObject.Find("Player Fortress Unit").GetComponent<PUnit>());
                     }
 
-
+                    audioSource.Stop();
+                    audioSource.clip = war_end;
+                    audioSource.loop = true;
+                    audioSource.Play();
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -145,7 +159,10 @@ public class BattleManager : MonoBehaviour
                     {
                         EUnitManager.instance.units.Add(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
                     }
-
+                    audioSource.Stop();
+                    audioSource.clip = war_end;
+                    audioSource.loop = true;
+                    audioSource.Play();
                     TurnManager.instance.checkWinorLose();
                 }
                 break;
@@ -163,6 +180,10 @@ public class BattleManager : MonoBehaviour
                     {
                         EUnitManager.instance.units.Add(GameObject.Find("Enemy Fortress Unit").GetComponent<EUnit>());
                     }
+                    audioSource.Stop();
+                    audioSource.clip = war_end;
+                    audioSource.loop = true;
+                    audioSource.Play();
                     TurnManager.instance.checkWinorLose();
                 }
                 break;

@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 public class TurnManager: MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI messageText;
+    [SerializeField] private GameObject messageCanvas;
+    private bool isDisplayingMessage = false;
+    private int messagecnt = 0;
     public static TurnManager instance;
 
     public float Day;
@@ -18,7 +22,7 @@ public class TurnManager: MonoBehaviour
     [SerializeField] private GameObject thirdphase;
     [SerializeField] private GameObject thirdXbutton;
     [SerializeField] private GameObject thirdAttackbutton;
-
+    
     public bool Onattack=false;
     public bool EnemyAttack = false;
     public bool StartWar = false;
@@ -47,6 +51,47 @@ public class TurnManager: MonoBehaviour
     {
         Day = 0;
         TurnStart();
+    }
+    private void Update()
+    {
+        if (isDisplayingMessage&&messagecnt==0)
+        {
+            Debug.Log("메시지실행");
+            messagecnt = 1;
+            StartCoroutine(DisplayMessageForSeconds());
+        }
+        
+    }
+    IEnumerator DisplayMessageForSeconds()
+    {
+        
+        yield return new WaitForSecondsRealtime(2);
+        {
+            
+            messageText.text = ""; // 메시지를 숨깁니다.
+            isDisplayingMessage = false;
+            messageCanvas.SetActive(false);
+            messagecnt = 0;
+        }
+        
+    }
+    public void DoNotHaveMoney()
+    {
+        messageCanvas.SetActive(true);
+        messageText.text = "Not enough Military Provision."; // 표시할 메시지를 여기에 입력
+        isDisplayingMessage = true;
+    }
+    public void ShowMessageCannotAttack0Army()
+    {
+        messageText.text = "You cannot attack with an army of 0 people."; // 표시할 메시지를 여기에 입력
+        isDisplayingMessage = true;
+        
+    }
+    public void ShowMessageCannotAttackDay()
+    {
+        messageText.text = "You cannot attack. Your soldiers are exhausted"; // 표시할 메시지를 여기에 입력
+        isDisplayingMessage = true;
+        
     }
 
     public void TurnStart()
@@ -111,18 +156,21 @@ public class TurnManager: MonoBehaviour
     {
         if (attackday > 0) //can't attack 
         {
-            Debug.Log("cannot attack");
             
+            messageCanvas.SetActive(true);
+            ShowMessageCannotAttackDay();
             Phase3();
         }
         else if (PUnitManager.instance.Archer + PUnitManager.instance.Lancer + PUnitManager.instance.Paladin <= 0)
         {
-            Debug.Log("not enough army");
+            messageCanvas.SetActive(true);
+            ShowMessageCannotAttack0Army();
+            
             Phase3();
         }
         else
         {
-            Debug.Log("attack");
+            
             Onattack = true;
             attackday = 3;
             checkAttacked();
