@@ -18,7 +18,10 @@ public class PUnit: MonoBehaviour
 
     private void Start()
     {
-        damage = damage * GameManager.instance.P_multi;
+        if (this.tag != "Building")
+        {
+            damage = damage * GameManager.instance.P_multi;
+        }
         //this.GetComponent<P1UnitManager>().units.Add(this);
         PUnitManager.instance.units.Add(this);
       //  this.GetComponent<ForwardMovement>().speed = speed;
