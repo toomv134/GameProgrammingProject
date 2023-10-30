@@ -10,6 +10,7 @@ public class Turn_phase3 : MonoBehaviour //전날이랑 비교
   
     
     [SerializeField] TextMeshProUGUI thirdphase_text;
+    [SerializeField] TextMeshProUGUI thirdphase_des;
     public void Awake()
     {
         if (instance == null)
@@ -35,10 +36,10 @@ public class Turn_phase3 : MonoBehaviour //전날이랑 비교
 
     }
     void setStateText()
-    { 
+    {
 
-        thirdphase_text.text = "How many troops do I have...\n" +
-                   PUnitManager.instance.Paladin.ToString() + " Sword Soldier\n" +
+        thirdphase_text.text = "How many troops do I have...\n";
+        thirdphase_des.text= PUnitManager.instance.Paladin.ToString() + " Sword Soldier\n" +
              PUnitManager.instance.Archer.ToString() + " Archer Soldier\n" +
             PUnitManager.instance.Lancer.ToString() + " Lancer Soldier\n";
 
