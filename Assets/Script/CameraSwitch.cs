@@ -133,7 +133,7 @@ public class CameraSwitch : MonoBehaviour
             {
                 case 0:
                     BlooshedCamera.enabled = true;
-                    StartCoroutine(FastTransitionCameras(toBlooshed, toBlooshedRotate));
+                    //StartCoroutine(FastTransitionCameras(toBlooshed, toBlooshedRotate));
                     break;
                 case 1:
                     PlayerAttack1Camera.enabled = true;

@@ -58,6 +58,7 @@ public class BattleManager : MonoBehaviour
             case 0:
                 if (player_unit == 0 || enemy_unit == 0)
                 {
+                    Debug.Log("场车澜");
                     ReturnArmy();
                     makefieldArmyzero();
                     cnt = 0;
@@ -79,7 +80,7 @@ public class BattleManager : MonoBehaviour
             case 1:
                 if (!EUnitManager.instance.fortress || player_unit == 0)
                 {
-                    
+                    Debug.Log("场车澜2");
                     ReturnArmy();
                     makefieldArmyzero();
                     if (!EUnitManager.instance.fortress)
@@ -102,6 +103,7 @@ public class BattleManager : MonoBehaviour
             case 2:
                 if (!EUnitManager.instance.castle || player_unit == 0)
                 {
+                    Debug.Log("场车澜3");
                     ReturnArmy();
                     makefieldArmyzero();
                     cnt = 0;
@@ -120,6 +122,7 @@ public class BattleManager : MonoBehaviour
             case 3:
                 if (!PUnitManager.instance.fortress || enemy_unit == 0)
                 {
+                    Debug.Log("场车澜4");
                     ReturnArmy();
                     makefieldArmyzero();
                     if (!PUnitManager.instance.fortress)
@@ -142,6 +145,7 @@ public class BattleManager : MonoBehaviour
             case 4:
                 if (!PUnitManager.instance.castle || enemy_unit == 0)
                 {
+                    Debug.Log("场车澜5");
                     ReturnArmy();
                     makefieldArmyzero();
                     cnt = 0;
@@ -208,6 +212,8 @@ public class BattleManager : MonoBehaviour
             Destroy(PBuildingManager.instance.Fortress_P_building[i].gameObject);
             PBuildingManager.instance.Fortress_P_building.RemoveAt(i);
         }
+        if (PUnitManager.instance.fortress)
+            PUnitManager.instance.units.Remove(GameObject.Find("Player Fortress Unit").GetComponent<PUnit>());
     }
     private void ReturnArmy()
     {
