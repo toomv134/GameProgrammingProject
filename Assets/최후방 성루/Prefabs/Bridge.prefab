@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7243603107143967547}
   - component: {fileID: 6249625445395478144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.351601, y: 0.91077435, z: 4.382847}
-  m_Center: {x: 2.3649416, y: -0.044612467, z: -0.03835535}
+  m_Size: {x: 10.351601, y: 0.9107765, z: 5.024492}
+  m_Center: {x: 2.3649416, y: -0.044612516, z: -0.35917893}
 --- !u!1 &5165791670885718244
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 6678952972417710385}
   - component: {fileID: -6227900723378795009}
   - component: {fileID: 2284162947895737209}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8742335421387223101}
   - component: {fileID: 9110284931066152649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5957546474628575235}
   - component: {fileID: 4289925645462701838}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,5 +293,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.351601, y: 0.91077435, z: 4.382847}
-  m_Center: {x: 2.3649416, y: -0.044612467, z: -0.03835535}
+  m_Size: {x: 10.351601, y: 0.91077435, z: 4.706563}
+  m_Center: {x: 2.3649416, y: -0.044612467, z: 0.12350285}
