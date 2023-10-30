@@ -18,7 +18,10 @@ public class EUnit: MonoBehaviour
 
     private void Start()
     {
-        damage = damage * GameManager.instance.E_multi;
+        if (this.tag != "Building")
+        {
+            damage = damage * GameManager.instance.E_multi;
+        }
         //this.GetComponent<P2UnitManager>().units.Add(this);
         EUnitManager.instance.units.Add(this);
      //   this.GetComponent<ForwardMovement>().speed = speed;
