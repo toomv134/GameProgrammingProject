@@ -84,7 +84,7 @@ public class CameraSwitch : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning && cnt == 0)
+        if (Input.GetKeyDown(KeyCode.W) && !isTransitioning && cnt == 0&&PUnitManager.instance.fortress)
         {
             if (secondCamera.enabled)
             {
