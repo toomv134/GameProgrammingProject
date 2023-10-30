@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             //처음 군량 2배
             Debug.Log("레오");
-            PResourceManager.instance.MP = 400;
+            PResourceManager.instance.MP = 300;
         }
         else if (person == 1)
         {
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             //처음 군량 2배
             Debug.Log("레오");
-            EResourceManager.instance.MP = 400;
+            EResourceManager.instance.MP = 300;
         }
         else if (AI_choose == 1)
         {
